@@ -8,9 +8,8 @@ namespace ConsoleTester
         static void Main(string[] args)
         {
             AdminLoginManager adminManager = new AdminLoginManager();
-            adminManager.CreateAdmin("admin123");
-            bool loginResult = adminManager.Login("admin123");
-            Console.WriteLine(loginResult);
+
+            Console.ReadKey();
         }
     }
 }
