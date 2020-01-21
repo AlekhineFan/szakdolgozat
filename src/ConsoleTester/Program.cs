@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using DataAccess.Model;
 
 namespace ConsoleTester
 {
@@ -6,7 +8,9 @@ namespace ConsoleTester
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using QuestionnaireContext context = new QuestionnaireContext();
+
+            var questions = context.Questions.ToArray();
         }
     }
 }
