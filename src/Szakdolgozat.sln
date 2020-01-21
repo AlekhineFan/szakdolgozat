@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFUserInterface", "WPFUser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{B90FFD9C-891A-4CE0-933D-5669749C83FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B90FFD9C-891A-4CE0-933D-5669749C83FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90FFD9C-891A-4CE0-933D-5669749C83FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90FFD9C-891A-4CE0-933D-5669749C83FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
