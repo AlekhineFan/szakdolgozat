@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
-using WPFUserInterface.Models;
-using static WPFUserInterface.Models.Question;
+using WPFUserInterface.Model;
 
 namespace WPFUserInterface
 {
-    public class TestContext : DbContext
+    public class QuestionnaireContext : DbContext
     {
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Completion> Completions { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Instructor> Instructors { get; set; }
-        public DbSet<Password> Passwords { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=test.db");
+            => options.UseSqlite("Data Source=sqlite.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .Entity<Question>()
-                .Property(q => q.RightLeft)
+                .Property(q => q.Hemisphere)
                 .HasConversion(
                     q => q.ToString(),
                     q => (Hemisphere)Enum.Parse(typeof(Hemisphere), q));
         }
-
     }
 }

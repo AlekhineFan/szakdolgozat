@@ -8,7 +8,7 @@ using WPFUserInterface;
 
 namespace WPFUserInterface.Migrations
 {
-    [DbContext(typeof(TestContext))]
+    [DbContext(typeof(QuestionnaireContext))]
     [Migration("20200121104059_InitialCreate")]
     partial class InitialCreate
     {

@@ -7,7 +7,7 @@ using WPFUserInterface;
 
 namespace WPFUserInterface.Migrations
 {
-    [DbContext(typeof(TestContext))]
+    [DbContext(typeof(QuestionnaireContext))]
     partial class TestContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
