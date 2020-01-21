@@ -2,7 +2,7 @@
 
 namespace DataAccess.Model
 {
-    public class Completion
+    public class Session
     {
         public int Id { get; set; }
         public Subject Subject { get; set; }

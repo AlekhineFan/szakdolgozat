@@ -19,6 +19,11 @@ namespace BusinessLogic
             return admin.Password == password;
         }
 
+        public bool IsAdminExist()
+        {
+            return dbContext.Admins.Any();
+        }
+
         public void CreateAdmin(string password)
         {
             if (dbContext.Admins.Any())
