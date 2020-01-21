@@ -1,0 +1,41 @@
+﻿<Window x:Class="WPFUserInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUserInterface"
+        mc:Ignorable="d"
+        Title="Agyfélteke teszt" Height="500" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="auto"/>
+            <ColumnDefinition Width ="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+        <DockPanel>
+            <Menu x:Name="menuMain" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
+                <MenuItem x:Name="menuItemFile" Header="File">
+                    <MenuItem x:Name="menuItemStartTest" Header="Teszt indítása"/>
+                    <MenuItem x:Name="menuItemChildrenTest" Header="Eredmények megtekintése"/>
+                        <MenuItem x:Name="menuItemExit" Header="Kilépés"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+            <DockPanel>
+                <Menu x:Name="menuTest" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
+                    <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések">
+                        <MenuItem x:Name="menuItemManageQuestions" Header="Kérdések kezelése"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </StackPanel>
+
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="frameMain" NavigationUIVisibility="Hidden">
+        </Frame>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="WPFUserInterface.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUserInterface"
+        mc:Ignorable="d"
+        Title="Bejelentkezés" Height="120" Width="230" FontSize="14">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+            <Button x:Name="buttonAdminLogin" Content="Belépés tesztvezetőként" Margin="5,5,5,5" Width="auto" Height="auto"></Button>
+            <Button x:Name="buttonGuestLogin" Content="Belépés résztvevőként" Margin="5,2,5,5" Width="auto" Height="auto"></Button>
+            <Button x:Name="buttonRegistration" Content="Regisztráció résztvevőként"  Margin="5,2,5,5" Width="auto" Height="auto"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
