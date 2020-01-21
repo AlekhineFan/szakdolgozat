@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WPFUserInterface.Model
+namespace DataAccess.Model
 {
     public class Completion
     {

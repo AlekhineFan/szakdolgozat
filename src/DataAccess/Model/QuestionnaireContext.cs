@@ -1,8 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using WPFUserInterface.Model;
 
-namespace WPFUserInterface
+namespace DataAccess.Model
 {
     public class QuestionnaireContext : DbContext
     {
