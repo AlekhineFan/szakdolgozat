@@ -1,1 +1,1 @@
-# szakdolgozat
+Szávin Márk OKJ szakdolgozat
