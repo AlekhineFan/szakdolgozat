@@ -12,7 +12,7 @@ namespace DataAccess.Model
         public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite(@"Data Source=..\..\binaries\sqlite.db");
+            => options.UseSqlite(@"Data Source=..\..\sqlite.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

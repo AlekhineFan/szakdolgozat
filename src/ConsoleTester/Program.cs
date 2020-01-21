@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Linq;
-using DataAccess.Model;
+using BusinessLogic;
 
 namespace ConsoleTester
 {
@@ -8,9 +7,10 @@ namespace ConsoleTester
     {
         static void Main(string[] args)
         {
-            using QuestionnaireContext context = new QuestionnaireContext();
-
-            var questions = context.Questions.ToArray();
+            AdminLoginManager adminManager = new AdminLoginManager();
+            adminManager.CreateAdmin("admin123");
+            bool loginResult = adminManager.Login("admin123");
+            Console.WriteLine(loginResult);
         }
     }
 }
