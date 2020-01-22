@@ -5,34 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="465" d:DesignWidth="400"
+      d:DesignHeight="200" d:DesignWidth="400"
       Title="PageTest" Background="AliceBlue">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            
+          
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" FontSize="12" FontWeight="Bold" Grid.RowSpan="2"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" Height="30"  Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" FontSize="12" FontWeight="Bold"/>
 
-        <TextBlock x:Name="textBoxQuestion" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" FontSize="20" Padding="2" TextWrapping="Wrap" Height="80" Width="auto"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
 
-        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="3" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="10,5,10,5" HorizontalAlignment="Center"/>
-            <Button x:Name="buttonNo" Content="Nem jellemző" Height="50" Width="80" Margin="10,5,10,5" HorizontalAlignment="Center"/>
+        <TextBox x:Name="textBoxQuestion" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto"/>
 
+        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="50,5,10,5" HorizontalAlignment="Stretch"/>
+            <Button x:Name="buttonNo" Content="Nem jellemző" Height="50" Width="80" Margin="10,5,0,5" HorizontalAlignment="Stretch"/>
         </StackPanel>
-
+        
     </Grid>
 </Page>
