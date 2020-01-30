@@ -12,7 +12,7 @@ namespace ConsoleTester
             AddQuestionsToDb();
 
             SubjectManager subjectManager = new SubjectManager();
-            Subject subject = subjectManager.CreateSubject("subject1", 20);
+            Subject subject = subjectManager.CreateSubject("subject1", 20, Gender.Male);
 
             using QuestionManager questionManager = new QuestionManager();
             Question[] questions = questionManager.GetQuestionsForSubject(subject);

@@ -42,31 +42,13 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nickname = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false)
+                    Age = table.Column<int>(nullable: false),
+                    Gender = table.Column<string>(nullable: false),
+                    SessionStartDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Subjects", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Completions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SubjectId = table.Column<int>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Completions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Completions_Subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subjects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,41 +57,36 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CompletionId = table.Column<int>(nullable: true),
                     QuestionId = table.Column<int>(nullable: true),
-                    Answer = table.Column<bool>(nullable: false)
+                    Answer = table.Column<bool>(nullable: false),
+                    SubjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_QuestionAnswers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_QuestionAnswers_Completions_CompletionId",
-                        column: x => x.CompletionId,
-                        principalTable: "Completions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_QuestionAnswers_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_QuestionAnswers_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Completions_SubjectId",
-                table: "Completions",
-                column: "SubjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_QuestionAnswers_CompletionId",
-                table: "QuestionAnswers",
-                column: "CompletionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_QuestionAnswers_QuestionId",
                 table: "QuestionAnswers",
                 column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_QuestionAnswers_SubjectId",
+                table: "QuestionAnswers",
+                column: "SubjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -119,9 +96,6 @@ namespace DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "QuestionAnswers");
-
-            migrationBuilder.DropTable(
-                name: "Completions");
 
             migrationBuilder.DropTable(
                 name: "Questions");

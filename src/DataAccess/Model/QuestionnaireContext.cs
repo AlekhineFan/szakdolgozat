@@ -6,7 +6,6 @@ namespace DataAccess.Model
     public class QuestionnaireContext : DbContext
     {
         public DbSet<Admin> Admins { get; set; }
-        public DbSet<Session> Sessions { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public DbSet<Subject> Subjects { get; set; }
@@ -22,6 +21,13 @@ namespace DataAccess.Model
                 .HasConversion(
                     q => q.ToString(),
                     q => (Hemisphere)Enum.Parse(typeof(Hemisphere), q));
+
+            modelBuilder
+                .Entity<Subject>()
+                .Property(q => q.Gender)
+                .HasConversion(
+                    q => q.ToString(),
+                    q => (Gender)Enum.Parse(typeof(Gender), q));
         }
     }
 }

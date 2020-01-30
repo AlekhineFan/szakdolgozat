@@ -30,25 +30,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Admins");
                 });
 
-            modelBuilder.Entity("DataAccess.Model.Completion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("SubjectId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("Completions");
-                });
-
             modelBuilder.Entity("DataAccess.Model.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -79,17 +60,17 @@ namespace DataAccess.Migrations
                     b.Property<bool>("Answer")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CompletionId")
+                    b.Property<int?>("QuestionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("QuestionId")
+                    b.Property<int?>("SubjectId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompletionId");
-
                     b.HasIndex("QuestionId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("QuestionAnswers");
                 });
@@ -103,7 +84,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Nickname")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("SessionStartDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -111,22 +99,15 @@ namespace DataAccess.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("DataAccess.Model.Completion", b =>
-                {
-                    b.HasOne("DataAccess.Model.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId");
-                });
-
             modelBuilder.Entity("DataAccess.Model.QuestionAnswer", b =>
                 {
-                    b.HasOne("DataAccess.Model.Completion", "Completion")
-                        .WithMany()
-                        .HasForeignKey("CompletionId");
-
                     b.HasOne("DataAccess.Model.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId");
+
+                    b.HasOne("DataAccess.Model.Subject", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("SubjectId");
                 });
 #pragma warning restore 612, 618
         }

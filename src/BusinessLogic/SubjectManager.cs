@@ -1,4 +1,5 @@
 ﻿using DataAccess.Model;
+using System;
 
 namespace BusinessLogic
 {
@@ -10,9 +11,9 @@ namespace BusinessLogic
             dbContext = new QuestionnaireContext();
         }
 
-        public Subject CreateSubject(string nickname, int age)
+        public Subject CreateSubject(string nickname, int age, Gender gender)
         {
-            Subject subject = new Subject() { Nickname = nickname, Age = age };
+            Subject subject = new Subject() { Nickname = nickname, Age = age, Gender = gender, SessionStartDate = DateTime.Now };
             dbContext.Subjects.Add(subject);
             dbContext.SaveChanges();
 
