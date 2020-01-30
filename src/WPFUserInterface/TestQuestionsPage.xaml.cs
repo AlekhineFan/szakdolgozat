@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace WPFUserInterface
 {
     /// <summary>
-    /// Interaction logic for PageTest.xaml
+    /// Interaction logic for TestQuestionsPage.xaml
     /// </summary>
-    public partial class PageTest : Page
+    public partial class TestQuestionsPage : Page
     {
-        public PageTest()
+        public TestQuestionsPage()
         {
             InitializeComponent();
         }
