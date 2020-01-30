@@ -24,5 +24,15 @@ namespace WPFUserInterface
         {
             InitializeComponent();
         }
+
+        private void menuItemStartTestClick(object sender, RoutedEventArgs e)
+        {
+            frameMain.Content = new TestQuestionsPage();
+        }
+
+        private void menuTestQuestionsClick(object sender, RoutedEventArgs e)
+        {
+            frameMain.Content = new PageEditQuestions();
+        }
     }
 }

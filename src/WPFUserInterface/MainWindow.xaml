@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUserInterface"
         mc:Ignorable="d"
-        Title="Agyfélteke teszt" Height="500" Width="500">
+        Title="Agyfélteke teszt" Height="550" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width ="auto"/>
@@ -20,7 +20,7 @@
         <DockPanel>
             <Menu x:Name="menuMain" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
                 <MenuItem x:Name="menuItemFile" Header="File">
-                    <MenuItem x:Name="menuItemStartTest" Header="Teszt indítása"/>
+                    <MenuItem x:Name="menuItemStartTest" Header="Teszt indítása" Click="menuItemStartTestClick"/>
                     <MenuItem x:Name="menuItemChildrenTest" Header="Eredmények megtekintése"/>
                         <MenuItem x:Name="menuItemExit" Header="Kilépés"/>
                 </MenuItem>
@@ -28,7 +28,7 @@
         </DockPanel>
             <DockPanel>
                 <Menu x:Name="menuTest" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
-                    <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések">
+                    <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések" Click="menuTestQuestionsClick">
                         <MenuItem x:Name="menuItemManageQuestions" Header="Kérdések kezelése"/>
                     </MenuItem>
                 </Menu>

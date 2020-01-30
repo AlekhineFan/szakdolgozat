@@ -28,6 +28,10 @@ namespace BusinessLogic
                 .Take(5)
                 .ToArray();
         }
+        public IQueryable<Question> GetAllQuestions()
+        {
+            return dbContext.Questions;
+        }
 
         public void Dispose()
         {
