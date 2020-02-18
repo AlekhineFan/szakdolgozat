@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using DataAccess.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +29,12 @@ namespace WPFUserInterface
 
         private void menuItemStartTestClick(object sender, RoutedEventArgs e)
         {
-            frameMain.Content = new TestQuestionsPage();
+            
         }
 
         private void menuTestQuestionsClick(object sender, RoutedEventArgs e)
         {
-            frameMain.Content = new PageEditQuestions();
+            
         }
 
         private void memuItemLogin_Click(object sender, RoutedEventArgs e)
@@ -61,9 +63,10 @@ namespace WPFUserInterface
             frameMain.Content = subjectLoginPage;
         }
 
-        private void SubjectLoginPage_Finished(object sender, string e)
+        private void SubjectLoginPage_Finished(object sender, Subject subject)
         {
-            TestQuestionsPage questionsPage = new TestQuestionsPage();
+            QuizMaster quizMaster = new QuizMaster(subject);
+            TestQuestionsPage questionsPage = new TestQuestionsPage(quizMaster);
             frameMain.Content = questionsPage;
         }
     }

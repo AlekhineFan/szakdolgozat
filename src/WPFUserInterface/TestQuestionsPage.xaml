@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
       d:DesignHeight="200" d:DesignWidth="400"
-      Title="Tesztkérdések" Background="AliceBlue">
+      d:DataContext="{d:DesignInstance Type=local:TestQuestionsPage, IsDesignTimeCreatable=True}"
+      Title="Tesztkérdések" Background="AliceBlue"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,15 +31,15 @@
             <TextBlock Height="30"  Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold"/>
             
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="textBlockQuestionNumber" Width="20" Text=""/>
+                <TextBlock Text="{Binding QuestionNumber}" x:Name="textBlockQuestionNumber" Width="20"/>
                 <TextBlock Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
             </StackPanel>
             
-            <TextBox x:Name="textBoxQuestion" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto"/>
+            <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto"/>
             
             <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="15,5,10,5" HorizontalAlignment="Stretch"/>
-                <Button x:Name="buttonNo" Content="Nem jellemző" Height="50" Width="80" Margin="10,5,0,5" HorizontalAlignment="Stretch"/>
+                <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="15,5,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
+                <Button x:Name="buttonNo" Content="Nem jellemző" Height="50" Width="80" Margin="10,5,0,5" HorizontalAlignment="Stretch" Click="buttonNo_Click"/>
             </StackPanel>
             
         </StackPanel>

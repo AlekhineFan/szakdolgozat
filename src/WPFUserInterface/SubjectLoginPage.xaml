@@ -10,6 +10,6 @@
       Title="SubjectLoginPage">
 
     <Grid>
-        <TextBox Text="{Binding SubjectName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" KeyDown="TextBoxSubjectNameKeyDown"/>
+        <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" KeyDown="TextBoxSubjectNameKeyDown"/>
     </Grid>
 </Page>
