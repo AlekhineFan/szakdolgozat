@@ -15,9 +15,9 @@ namespace WPFUserInterface
     /// <summary>
     /// Interaction logic for Login2.xaml
     /// </summary>
-    public partial class Login2 : Window
+    public partial class LoginWindow : Window
     {
-        public Login2()
+        public LoginWindow()
         {
             InitializeComponent();
         }

@@ -34,5 +34,37 @@ namespace WPFUserInterface
         {
             frameMain.Content = new PageEditQuestions();
         }
+
+        private void memuItemLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            bool? dialogResult = login.ShowDialog();
+
+            if (dialogResult != true)
+                return;
+            
+            // Logged in
+
+
+        }
+
+        private void nemuItemLogout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SubjectLoginPage subjectLoginPage = new SubjectLoginPage();
+            subjectLoginPage.Finished += SubjectLoginPage_Finished;
+
+            frameMain.Content = subjectLoginPage;
+        }
+
+        private void SubjectLoginPage_Finished(object sender, string e)
+        {
+            TestQuestionsPage questionsPage = new TestQuestionsPage();
+            frameMain.Content = questionsPage;
+        }
     }
 }

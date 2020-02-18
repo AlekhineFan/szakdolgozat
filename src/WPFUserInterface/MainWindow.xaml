@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUserInterface"
         mc:Ignorable="d"
-        Title="Agyfélteke teszt" Height="550" Width="500">
+        Title="Agyfélteke teszt" Height="550" Width="500"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width ="auto"/>
@@ -16,24 +17,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
         <DockPanel>
-            <Menu x:Name="menuMain" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
+            <Menu x:Name="menuMain" DockPanel.Dock="Top" Visibility="Collapsed">
                 <MenuItem x:Name="menuItemFile" Header="File">
                     <MenuItem x:Name="menuItemStartTest" Header="Teszt indítása" Click="menuItemStartTestClick"/>
                     <MenuItem x:Name="menuItemChildrenTest" Header="Eredmények megtekintése"/>
-                        <MenuItem x:Name="menuItemExit" Header="Kilépés"/>
+                    <MenuItem x:Name="menuItemExit" Header="Kilépés"/>
+                </MenuItem>
+                <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések" Click="menuTestQuestionsClick">
+                    <MenuItem x:Name="menuItemManageQuestions" Header="Kérdések kezelése"/>
+                </MenuItem>
+                <MenuItem x:Name="menuItemAdmin" Header="Admin">
+                    <MenuItem x:Name="memuItemLogin" Header="Bejelentkezés" Click="memuItemLogin_Click"/>
+                    <MenuItem x:Name="nemuItemLogout" Header="Kijelentkezés" Click="nemuItemLogout_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
-            <DockPanel>
-                <Menu x:Name="menuTest" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1">
-                    <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések" Click="menuTestQuestionsClick">
-                        <MenuItem x:Name="menuItemManageQuestions" Header="Kérdések kezelése"/>
-                    </MenuItem>
-                </Menu>
-            </DockPanel>
-        </StackPanel>
 
         <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="frameMain" NavigationUIVisibility="Hidden">
         </Frame>
