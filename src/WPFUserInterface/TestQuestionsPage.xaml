@@ -31,7 +31,7 @@
             <TextBlock Height="30"  Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold"/>
             
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding QuestionNumber}" x:Name="textBlockQuestionNumber" Width="20"/>
+                <TextBlock Text="{Binding QuestionNumber}" x:Name="textBlockQuestionNumber" Width="20" Padding="10"/>
                 <TextBlock Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
             </StackPanel>
             
