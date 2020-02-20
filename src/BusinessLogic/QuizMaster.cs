@@ -2,28 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace BusinessLogic
 {
-   public class QuizMaster
+    public class QuizMaster
     {
         private readonly Subject subject;
+        private readonly IEnumerator<Question> questionsEnumerator;
+        private readonly QuestionManager questionManager = new QuestionManager();        
 
         public QuizMaster(Subject subject)
         {
             this.subject = subject ?? throw new ArgumentNullException(nameof(subject));
+            questionsEnumerator = questionManager.GetQuestionsForSubject(subject).GetEnumerator();
         }
 
         public Question GetNextQuestion()
         {
-            return new Question()
-            {
-                Id = 999,
-                Text = "Teszt kérdés?",
-                IsAdult = true,
-                Hemisphere = Hemisphere.Left
-            };
+            questionsEnumerator.MoveNext();
+            return questionsEnumerator.Current;
         }
 
         public void AddAnswer(bool answer)

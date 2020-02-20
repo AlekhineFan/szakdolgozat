@@ -9,7 +9,7 @@ namespace WPFUserInterface
     public partial class SubjectLoginPage : Page
     {
         public event EventHandler<Subject> Finished;
-        public string SubjectName { get; set; }
+        public string SubjectName { get; set; } = "Subject123";
         public Regex Regex { get; set; }
 
         public SubjectLoginPage()
@@ -26,10 +26,10 @@ namespace WPFUserInterface
             {
                 Regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9]{5,19}$");
 
-                if (!Regex.IsMatch(textBoxSubjectName.Text))
+                if (!Regex.IsMatch(textBoxSubjectName.Text)) //TODO: message box, excepton töröl
                     throw new ArgumentException("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!");
 
-                Subject subject = new Subject()
+                Subject subject = new Subject() //TODO: Property értékek
                 {
                     Nickname = SubjectName,
                     Age = 20,

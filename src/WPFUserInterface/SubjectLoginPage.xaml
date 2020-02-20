@@ -13,17 +13,17 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBlock Text="Kérem adja meg a nemét!" Margin="5,5,5,5" FontSize="14" FontWeight="DemiBold"/>
+                <TextBlock Text="Nem" Margin="5,5,5,5" FontSize="14" FontWeight="DemiBold"/>
+                <CheckBox IsChecked="True" x:Name="checkBoxMale" Content="Férfi" Margin="5,6,5,0"/>
                 <CheckBox x:Name="checkBoxFemale" Content="Nő" Margin="5,6,5,0"/>
-                <CheckBox x:Name="checkBoxMale" Content="Férfi" Margin="5,6,5,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Kérem adja meg az életkorát!" FontSize="14" FontWeight="DemiBold" Margin="5,5,5,10"/>
-                <xctk:IntegerUpDown x:Name="integerUpDownAge" Width="60" Height="25" Margin="10,5,10,10"/>
+                <TextBlock Text="Életkor" FontSize="14" FontWeight="DemiBold" Margin="5,5,5,10"/>
+                <xctk:IntegerUpDown Value="25" x:Name="integerUpDownAge" Width="60" Height="25" Margin="10,5,10,10"/>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Text="Kérem írjon be egy felhasználónevet, majd nyomjon Entert! A teszt eredményei ezzel a névvel lesznek rögzítve." FontSize="14" FontWeight="DemiBold" Margin="0,0,0,10"/>
-                <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" KeyDown="TextBoxSubjectNameKeyDown"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Név" FontSize="14" FontWeight="DemiBold" Margin="0,0,0,10"/>
+                <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" KeyDown="TextBoxSubjectNameKeyDown"/>
             </StackPanel>
         </StackPanel>
     </Grid>

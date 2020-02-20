@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BusinessLogic;
 using DataAccess.Model;
 
@@ -15,7 +16,7 @@ namespace ConsoleTester
             Subject subject = subjectManager.CreateSubject("subject1", 20, Gender.Male);
 
             using QuestionManager questionManager = new QuestionManager();
-            Question[] questions = questionManager.GetQuestionsForSubject(subject);
+            Question[] questions = questionManager.GetQuestionsForSubject(subject).ToArray();
 
 
             Console.WriteLine("FINISHED");

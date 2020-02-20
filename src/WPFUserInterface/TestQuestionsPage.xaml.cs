@@ -4,26 +4,20 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using WPFUserInterface.Utilities;
 
 namespace WPFUserInterface
 {
     public partial class TestQuestionsPage : Page, INotifyPropertyChanged
     {
         private readonly QuizMaster quizMaster;
-        private int questionNumber = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Question CurrentQuestion { get; set; }
-        public int QuestionNumber
-        {
-            get => questionNumber;
-            set
-            {
-                questionNumber = value;
-                RaisePropertyChanged();
-            }
-        }
+        public NotifyProperty<Question> CurrentQuestion { get; set; } = new NotifyProperty<Question>();
+
+        public NotifyProperty<int> QuestionNumber { get; set; } = new NotifyProperty<int>();
+        
 
         public TestQuestionsPage()
         {
@@ -63,8 +57,8 @@ namespace WPFUserInterface
 
         private void NextQuestion()
         {
-            CurrentQuestion = quizMaster.GetNextQuestion();
-            QuestionNumber++;
+            CurrentQuestion.Value = quizMaster.GetNextQuestion();
+            QuestionNumber.Value++;
         }
 
         private void RaisePropertyChanged([CallerMemberName] string propertyName = null)

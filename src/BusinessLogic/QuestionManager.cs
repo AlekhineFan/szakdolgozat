@@ -19,14 +19,13 @@ namespace BusinessLogic
             dbContext.SaveChanges();
         }
 
-        public Question[] GetQuestionsForSubject(Subject subject)
+        public IQueryable<Question> GetQuestionsForSubject(Subject subject)
         {
             bool isAdult = subject.Age >= 18;
 
             return dbContext.Questions
                 .Where(q => q.IsAdult == isAdult)
-                .Take(5)
-                .ToArray();
+                .Take(5);                
         }
         public IQueryable<Question> GetAllQuestions()
         {
