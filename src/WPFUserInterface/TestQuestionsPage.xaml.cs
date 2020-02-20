@@ -8,12 +8,11 @@ using WPFUserInterface.Utilities;
 
 namespace WPFUserInterface
 {
-    public partial class TestQuestionsPage : Page, INotifyPropertyChanged
+    public partial class TestQuestionsPage : Page
     {
         private readonly QuizMaster quizMaster;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        public event EventHandler Finished;
         public NotifyProperty<Question> CurrentQuestion { get; set; } = new NotifyProperty<Question>();
 
         public NotifyProperty<int> QuestionNumber { get; set; } = new NotifyProperty<int>();
@@ -49,21 +48,23 @@ namespace WPFUserInterface
         }
 
         private void AnswerChosen(bool answer)
-        {
-            // asdasd
-            quizMaster.AddAnswer(answer);
+        {            
+            quizMaster.AddAnswer(CurrentQuestion.Value, answer);
             NextQuestion();
         }
 
         private void NextQuestion()
         {
-            CurrentQuestion.Value = quizMaster.GetNextQuestion();
-            QuestionNumber.Value++;
-        }
+            Question next = quizMaster.GetNextQuestion();
 
-        private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (next is null)
+            {
+                Finished?.Invoke(this, EventArgs.Empty);
+                return;
+            }
+            
+            CurrentQuestion.Value = next;
+            QuestionNumber.Value++;
         }
     }
 }

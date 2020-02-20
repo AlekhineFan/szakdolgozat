@@ -1,19 +1,22 @@
 ﻿using DataAccess.Model;
+using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace BusinessLogic
 {
     public class QuizMaster
     {
-        private readonly Subject subject;
         private readonly IEnumerator<Question> questionsEnumerator;
-        private readonly QuestionManager questionManager = new QuestionManager();        
+        private readonly QuestionManager questionManager = new QuestionManager();
+        private readonly QuestionAnswerRepository questionAnswerRepository = new QuestionAnswerRepository();
+        private List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
 
         public QuizMaster(Subject subject)
         {
-            this.subject = subject ?? throw new ArgumentNullException(nameof(subject));
+            if (subject is null)
+                throw new ArgumentNullException(nameof(subject));
+
             questionsEnumerator = questionManager.GetQuestionsForSubject(subject).GetEnumerator();
         }
 
@@ -23,9 +26,19 @@ namespace BusinessLogic
             return questionsEnumerator.Current;
         }
 
-        public void AddAnswer(bool answer)
+        public void AddAnswer(Question question, bool answer)
         {
-            Debug.WriteLine("Answered: " + answer);
+            QuestionAnswer questionAnswer = new QuestionAnswer
+            {
+                Question = question,
+                Answer = answer
+            };
+            questionAnswers.Add(questionAnswer);
+        }
+
+        public void SaveAnswers()
+        {
+            questionAnswerRepository.SaveAnswers(questionAnswers);
         }
     }
 }

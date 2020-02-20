@@ -12,6 +12,7 @@ namespace ConsoleTester
             CreateAdminAndCheckLogin();
             AddQuestionsToDb();
 
+            return;
             SubjectManager subjectManager = new SubjectManager();
             Subject subject = subjectManager.CreateSubject("subject1", 20, Gender.Male);
 
