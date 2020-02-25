@@ -6,25 +6,41 @@
       xmlns:local="clr-namespace:WPFUserInterface"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:SubjectLoginPage, IsDesignTimeCreatable=True}"
-      Title="SubjectLoginPage">
+      Title="SubjectLoginPage" Background="AliceBlue" FontSize="14">
+
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBlock Text="Nem" Margin="5,5,5,5" FontSize="14" FontWeight="DemiBold"/>
-                <CheckBox IsChecked="True" x:Name="checkBoxMale" Content="Férfi" Margin="5,6,5,0"/>
-                <CheckBox x:Name="checkBoxFemale" Content="Nő" Margin="5,6,5,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Életkor" FontSize="14" FontWeight="DemiBold" Margin="5,5,5,10"/>
-                <xctk:IntegerUpDown Value="25" x:Name="integerUpDownAge" Width="60" Height="25" Margin="10,5,10,10"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Név" FontSize="14" FontWeight="DemiBold" Margin="0,0,0,10"/>
-                <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" KeyDown="TextBoxSubjectNameKeyDown"/>
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5" >
+            <TextBlock Text="Nem" FontWeight="DemiBold" Margin="0,0,22,0"/>
+            <RadioButton x:Name="radioButtonMale" Content="Férfi" IsChecked="True"/>
+            <RadioButton x:Name="redioButtonFemale" Content="Nő" Margin="58,0,0,0"/>
         </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="Életkor" FontWeight="DemiBold" Margin="0,8"/>
+            <xctk:IntegerUpDown Value="25" x:Name="integerUpDownAge" Width="140" Height="30" Margin="10,5,10,10"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
+            <TextBlock Text="Név" FontWeight="DemiBold" Margin="0,5,28,0"/>
+            <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown"/>
+        </StackPanel>
+
+
     </Grid>
 </Page>
