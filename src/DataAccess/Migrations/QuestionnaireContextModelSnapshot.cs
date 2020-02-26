@@ -106,7 +106,7 @@ namespace DataAccess.Migrations
                         .HasForeignKey("QuestionId");
 
                     b.HasOne("DataAccess.Model.Subject", null)
-                        .WithMany("Answers")
+                        .WithMany("QuestionAnswers")
                         .HasForeignKey("SubjectId");
                 });
 #pragma warning restore 612, 618

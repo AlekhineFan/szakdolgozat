@@ -57,8 +57,8 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    QuestionId = table.Column<int>(nullable: true),
                     Answer = table.Column<bool>(nullable: false),
+                    QuestionId = table.Column<int>(nullable: true),
                     SubjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

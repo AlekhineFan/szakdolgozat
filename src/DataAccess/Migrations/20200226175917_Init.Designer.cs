@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(QuestionnaireContext))]
-    [Migration("20200220194406_Init")]
+    [Migration("20200226175917_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,7 +108,7 @@ namespace DataAccess.Migrations
                         .HasForeignKey("QuestionId");
 
                     b.HasOne("DataAccess.Model.Subject", null)
-                        .WithMany("Answers")
+                        .WithMany("QuestionAnswers")
                         .HasForeignKey("SubjectId");
                 });
 #pragma warning restore 612, 618

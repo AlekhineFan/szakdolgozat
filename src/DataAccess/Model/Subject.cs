@@ -9,7 +9,8 @@ namespace DataAccess.Model
         public string Nickname { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set;}
-        public List<QuestionAnswer> Answers { get; set; }
         public DateTime SessionStartDate { get; set; }
+
+        public List<QuestionAnswer> QuestionAnswers { get; set; }
     }
 }
