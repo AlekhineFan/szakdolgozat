@@ -1,40 +1,30 @@
 ﻿using System;
 using System.Linq;
 using DataAccess.Model;
+using DataAccess.Repositories;
 
 namespace BusinessLogic
 {
     public class QuestionManager : IDisposable
     {
-        private QuestionnaireContext dbContext;
+        private QuestionRepository questionRepo;
 
         public QuestionManager()
         {
-            dbContext = new QuestionnaireContext();
-        }
-
-        public void AddQuestion(Question question)
-        {
-            dbContext.Questions.Add(question);
-            dbContext.SaveChanges();
+            questionRepo = new QuestionRepository();
         }
 
         public IQueryable<Question> GetQuestionsForSubject(Subject subject)
         {
             bool isAdult = subject.Age >= 18;
 
-            return dbContext.Questions
+            return questionRepo.GetAll()
                 .Where(q => q.IsAdult == isAdult)
                 .Take(5);                
         }
-        public IQueryable<Question> GetAllQuestions()
-        {
-            return dbContext.Questions;
-        }
 
-        public void Dispose()
-        {
-            dbContext.Dispose();
-        }
+        public void AddQuestion(Question question) => questionRepo.Create(question);
+        public IQueryable<Question> GetAllQuestions() => questionRepo.GetAll();
+        public void Dispose() => questionRepo?.Dispose();
     }
 }

@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:SubjectLoginPage, IsDesignTimeCreatable=True}"
-      Title="SubjectLoginPage" Background="AliceBlue" FontSize="14">
+      Title="SubjectLoginPage" Background="AliceBlue" FontSize="14" Unloaded="Page_Unloaded">
 
 
     <Grid>

@@ -1,8 +1,6 @@
 ﻿using BusinessLogic;
 using DataAccess.Model;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using WPFUserInterface.Utilities;
 
@@ -16,7 +14,6 @@ namespace WPFUserInterface
         public NotifyProperty<Question> CurrentQuestion { get; set; } = new NotifyProperty<Question>();
 
         public NotifyProperty<int> QuestionNumber { get; set; } = new NotifyProperty<int>();
-        
 
         public TestQuestionsPage()
         {
@@ -25,11 +22,11 @@ namespace WPFUserInterface
             NextQuestion();
         }
 
-        public TestQuestionsPage(QuizMaster quizMaster)
+        public TestQuestionsPage(Subject subject)
         {
             InitializeComponent();
             DataContext = this;
-            this.quizMaster = quizMaster ?? throw new ArgumentNullException(nameof(quizMaster));
+            quizMaster = new QuizMaster(subject);
         }
 
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -48,8 +45,8 @@ namespace WPFUserInterface
         }
 
         private void AnswerChosen(bool answer)
-        {            
-            quizMaster.AddAnswer(CurrentQuestion.Value, answer);
+        {
+            quizMaster.AddAnswer(answer);
             NextQuestion();
         }
 
@@ -59,12 +56,18 @@ namespace WPFUserInterface
 
             if (next is null)
             {
+                quizMaster.SaveAnswers();
                 Finished?.Invoke(this, EventArgs.Empty);
                 return;
             }
-            
+
             CurrentQuestion.Value = next;
             QuestionNumber.Value++;
+        }
+
+        private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            quizMaster?.Dispose();
         }
     }
 }

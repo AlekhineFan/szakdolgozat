@@ -13,29 +13,38 @@ namespace ConsoleTester
         {
             CreateAdminAndCheckLogin();
             AddQuestionsToDb();
+            return;
 
-            SubjectManager subjectManager = new SubjectManager();
-            Subject subject = subjectManager.CreateSubject("subject1", 20, Gender.Male);
+            SubjectRepository subjectRepo = new SubjectRepository();
+            Subject subject = new Subject()
+            {
+                Nickname = "Zoli",
+                Age = 22,
+                Gender = Gender.Female,
+                QuestionAnswers = new List<QuestionAnswer>(),
+                SessionStartDate = DateTime.Now
+            };
+
+            subjectRepo.Create(subject);
 
             using QuestionManager questionManager = new QuestionManager();
             Question[] questions = questionManager.GetQuestionsForSubject(subject).ToArray();
 
-            List<QuestionAnswer> answers = questions.Select(q => new QuestionAnswer()
+            var answers = questions.Select(q => new QuestionAnswer()
             {
                 Answer = true,
                 Question = q
-            }).ToList();
+            });
 
-            var questionAnswerRepository = new QuestionAnswerRepository();
-            questionAnswerRepository.SaveAnswers(answers);
-
+            subject.QuestionAnswers.AddRange(answers);
+            subjectRepo.SaveChanges();
 
             Console.WriteLine("FINISHED");
             Console.ReadKey();
 
             using var context = new QuestionnaireContext();
+            context.Questions.RemoveRange(context.Questions);
             context.QuestionAnswers.RemoveRange(context.QuestionAnswers);
-            context.SaveChanges();
             context.Subjects.RemoveRange(context.Subjects);
             context.SaveChanges();
         }

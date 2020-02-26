@@ -22,8 +22,6 @@ namespace WPFUserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        private QuizMaster quizMaster;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -72,15 +70,13 @@ namespace WPFUserInterface
 
         private void SubjectLoginPage_Finished(object sender, Subject subject)
         {
-            quizMaster = new QuizMaster(subject);
-            TestQuestionsPage questionsPage = new TestQuestionsPage(quizMaster);
+            TestQuestionsPage questionsPage = new TestQuestionsPage(subject);
             questionsPage.Finished += QuestionsPage_Finished;
             frameMain.Content = questionsPage;
         }
 
         private void QuestionsPage_Finished(object sender, EventArgs e)
         {
-            quizMaster.SaveAnswers();
             QuizEndPage quizEndPage = new QuizEndPage();
             quizEndPage.Finished += QuizEndPage_Finished;
             frameMain.Content = quizEndPage;
