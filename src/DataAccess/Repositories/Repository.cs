@@ -23,6 +23,8 @@ namespace DataAccess.Repositories
             DbContext.SaveChanges();
         }
 
+        //TODO: Delete
+
         public IQueryable<T> GetAll()
         {
             return DbContext.Set<T>();

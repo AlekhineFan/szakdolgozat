@@ -3,6 +3,7 @@ using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -27,16 +28,21 @@ namespace WPFUserInterface
         {
             if (e.Key == Key.Enter)
             {
-                Regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9]{5,19}$");
+                Regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű]{5,19}$");
 
-                if (!Regex.IsMatch(textBoxSubjectName.Text)) //TODO: message box, excepton töröl
-                    throw new ArgumentException("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!");
+                if (!Regex.IsMatch(textBoxSubjectName.Text))
+                {                
+                    MessageBox.Show("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                Subject subject = new Subject() //TODO: Property értékek
+                    textBoxSubjectName.Clear();
+                    return;
+                }
+
+                Subject subject = new Subject()
                 {
-                    Nickname = SubjectName,
-                    Age = 20,
-                    Gender = Gender.Female,
+                    Nickname = textBoxSubjectName.Text,
+                    Age = (int)integerUpDownAge.Value,
+                    Gender = radioButtonMale.IsChecked == true? Gender.Male : Gender.Female,
                     SessionStartDate = DateTime.Now,
                     QuestionAnswers = new List<QuestionAnswer>()
                 };
