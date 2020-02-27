@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPFUserInterface"
         mc:Ignorable="d"
         Title="Agyfélteke teszt" Height="550" Width="500"
+        Background="{StaticResource ResourceKey=nsysc}"
         Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>

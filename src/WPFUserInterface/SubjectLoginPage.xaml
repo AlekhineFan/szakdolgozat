@@ -8,7 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:SubjectLoginPage, IsDesignTimeCreatable=True}"
-      Title="SubjectLoginPage" Background="AliceBlue" FontSize="14" Unloaded="Page_Unloaded">
+      Title="SubjectLoginPage" FontSize="22" FontFamily="Consolas"
+      Background="{StaticResource ResourceKey=brainlight}"
+      Unloaded="Page_Unloaded">
 
 
     <Grid>
@@ -27,17 +29,17 @@
         </Grid.RowDefinitions>
 
 
-        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5" >
-            <TextBlock Text="Nem" FontWeight="DemiBold" Margin="0,0,22,0"/>
-            <RadioButton x:Name="radioButtonMale" Content="Férfi" IsChecked="True"/>
-            <RadioButton x:Name="redioButtonFemale" Content="Nő" Margin="58,0,0,0"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
+            <TextBlock Text="Nem" FontWeight="Bold" Margin="0,0,22,0"/>
+            <RadioButton x:Name="radioButtonMale" Content="Férfi" IsChecked="True" FontWeight="Bold"/>
+            <RadioButton x:Name="redioButtonFemale" Content="Nő" Margin="58,0,0,0" FontWeight="Bold"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
-            <TextBlock Text="Életkor" FontWeight="DemiBold" Margin="0,8"/>
+            <TextBlock Text="Életkor" FontWeight="Bold" Margin="0,8"/>
             <xctk:IntegerUpDown Value="25" x:Name="integerUpDownAge" Width="140" Height="30" Margin="10,5,10,10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
-            <TextBlock Text="Név" FontWeight="DemiBold" Margin="0,5,28,0"/>
+            <TextBlock Text="Név" FontWeight="Bold" Margin="0,5,58,0"/>
             <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown"/>
         </StackPanel>
 

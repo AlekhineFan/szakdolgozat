@@ -5,6 +5,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ImageBrush x:Key="brain" ImageSource="images\brain.jpg"/>
+            <ImageBrush x:Key="brainColored" ImageSource="images\brainColored.jpg"/>
+            <ImageBrush x:Key="nsys" ImageSource="images\nervous_system.jpg"/>
+            <ImageBrush x:Key="nsysc" ImageSource="images\nsys_cropped.jpg"/>
+            <ImageBrush x:Key="brainlight" ImageSource="images\brain_light.jpg"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
