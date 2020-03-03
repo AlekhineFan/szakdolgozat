@@ -1,4 +1,6 @@
-﻿namespace DataAccess.Model
+﻿using System;
+
+namespace DataAccess.Model
 {
     public class Question
     {
@@ -6,5 +8,6 @@
         public string Text { get; set; }
         public bool IsAdult { get; set; }
         public Hemisphere Hemisphere { get; set; }
+
     }
 }

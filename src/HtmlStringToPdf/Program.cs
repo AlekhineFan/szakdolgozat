@@ -12,7 +12,7 @@ namespace HtmlStringToPdf
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszterdmények</h1>" +
                 "<p>tesztvezető neve:</p>" +
                 "<p>tesztalany neve:</p>" +
-                "<p><b>életkor:</b></p>" +
+                $"<p><b>életkor:</b></p>" +
                 "<p><b>nem:</b></p>" +
                 "<p><b>kitöltés időpontja:</b></p>" +
                 "<p><i>eredmény:</i><p >" +
