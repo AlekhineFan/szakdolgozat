@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFUserInterface", "WPFUserInterface\WPFUserInterface.csproj", "{B3458220-60C9-4275-B276-1F312DE152E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{B90FFD9C-891A-4CE0-933D-5669749C83FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{B90FFD9C-891A-4CE0-933D-5669749C83FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{E3A54900-BEE7-4F37-9FB7-1A12A4F6D459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{181E9630-7DD2-479F-A5BC-813F46F590BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{181E9630-7DD2-479F-A5BC-813F46F590BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlStringToPdf", "HtmlStringToPdf\HtmlStringToPdf.csproj", "{A36020E2-BD8F-4F13-B6F6-1756962A30E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
