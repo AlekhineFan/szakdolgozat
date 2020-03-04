@@ -1,19 +1,7 @@
-﻿using BusinessLogic;
-using DataAccess.Model;
+﻿using DataAccess.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPFUserInterface.Model;
 
 namespace WPFUserInterface
 {
@@ -27,37 +15,43 @@ namespace WPFUserInterface
             InitializeComponent();
         }
 
-        private void menuItemStartTestClick(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void menuTestQuestionsClick(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void memuItemLogin_Click(object sender, RoutedEventArgs e)
-        {
-            LoginWindow login = new LoginWindow();
-            bool? dialogResult = login.ShowDialog();
-
-            if (dialogResult != true)
-                return;
-            
-            // Logged in
-
-
-        }
-
-        private void nemuItemLogout_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            OpenSubjectLoginPage();
+            OpenWelcomePage();
+        }
+
+        private void OpenWelcomePage()
+        {
+            WelcomePage welcomePage = new WelcomePage();
+            welcomePage.Finished += (_, loginType) =>
+            {
+                if (loginType == LoginType.Admin)
+                    OpenAdminLoginPage();
+                else
+                    OpenSubjectLoginPage();
+            };
+
+            frameMain.Content = welcomePage;
+        }
+
+        private void OpenAdminLoginPage()
+        {
+            AdminLoginPage adminLoginPage = new AdminLoginPage();
+            adminLoginPage.Finished += (_, result) =>
+            {
+                if (result == OkCancelResult.Ok)
+                    OpenAdminPage();
+                else
+                    OpenWelcomePage();
+            };
+            frameMain.Content = adminLoginPage;
+        }
+
+        private void OpenAdminPage()
+        {
+            AdminPage adminPage = new AdminPage();
+            adminPage.Finished += (_, __) => OpenWelcomePage();
+            frameMain.Content = adminPage;
         }
 
         private void OpenSubjectLoginPage()

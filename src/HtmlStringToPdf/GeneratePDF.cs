@@ -1,8 +1,6 @@
 ﻿using DataAccess.Model;
 using SelectPdf;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HtmlStringToPdf
 {
@@ -14,7 +12,7 @@ namespace HtmlStringToPdf
         {
             string header = $"<head> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
-                "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszterdmények</h1>" +
+                "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszt eredmények</h1>" +
                 "<p>tesztvezető neve:</p>" +
                 $"<p>tesztalany neve:{subject.Nickname}</p>" +
                 $"<p><b>életkor:{subject.Age}</b></p>" +
@@ -37,6 +35,7 @@ namespace HtmlStringToPdf
                     $"<td>{questionNumber}. {answer.Question.Text}</td>" +
                     $"<td>{answer.Answer.ToString()}</td>" +
                     $"</tr>";
+                questionNumber++;
             }
             return html + "</table>";
         }

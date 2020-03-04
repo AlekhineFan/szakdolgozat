@@ -9,33 +9,7 @@
         Background="{StaticResource ResourceKey=nsysc}"
         Loaded="Window_Loaded">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width ="auto"/>
-            <ColumnDefinition Width ="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <DockPanel>
-            <Menu x:Name="menuMain" DockPanel.Dock="Top" Visibility="Collapsed">
-                <MenuItem x:Name="menuItemFile" Header="File">
-                    <MenuItem x:Name="menuItemStartTest" Header="Teszt indítása" Click="menuItemStartTestClick"/>
-                    <MenuItem x:Name="menuItemChildrenTest" Header="Eredmények megtekintése"/>
-                    <MenuItem x:Name="menuItemExit" Header="Kilépés"/>
-                </MenuItem>
-                <MenuItem x:Name="menuTestQuestions" Header="Tesztkérdések" Click="menuTestQuestionsClick">
-                    <MenuItem x:Name="menuItemManageQuestions" Header="Kérdések kezelése"/>
-                </MenuItem>
-                <MenuItem x:Name="menuItemAdmin" Header="Admin">
-                    <MenuItem x:Name="memuItemLogin" Header="Bejelentkezés" Click="memuItemLogin_Click"/>
-                    <MenuItem x:Name="nemuItemLogout" Header="Kijelentkezés" Click="nemuItemLogout_Click"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
-
-        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="frameMain" NavigationUIVisibility="Hidden">
+        <Frame x:Name="frameMain" NavigationUIVisibility="Hidden">
         </Frame>
     </Grid>
 </Window>
