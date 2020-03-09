@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="AdminPage">
 
     <Grid>
@@ -20,7 +21,7 @@
 
         <DockPanel>
             <Menu x:Name="menuMain" DockPanel.Dock="Top">
-                <MenuItem Header="Tesztkérdések"/>
+                <MenuItem Header="Tesztkérdések" Click="TestQuestions_Click"/>
                 <MenuItem Header="Kijelentkezés" Click="Logout_Click"/>
             </Menu>
         </DockPanel>

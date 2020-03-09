@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace WPFUserInterface
 {
-    /// <summary>
-    /// Interaction logic for AdminPage.xaml
-    /// </summary>
     public partial class AdminPage : Page
     {
         public event EventHandler Finished;
@@ -18,6 +15,16 @@ namespace WPFUserInterface
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             Finished?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void TestQuestions_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Content ??= new PageEditQuestions();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            TestQuestions_Click(null, null);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace WPFUserInterface
         public AdminLoginPage()
         {
             InitializeComponent();
+            passwordBoxPassword.Focus();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -36,6 +37,13 @@ namespace WPFUserInterface
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Finished?.Invoke(this, OkCancelResult.Cancel);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // DEV PHASE:
+            passwordBoxPassword.Password = "admin123";
+            LoginButton_Click(null, null);
         }
     }
 }

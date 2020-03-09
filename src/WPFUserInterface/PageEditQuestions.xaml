@@ -30,19 +30,30 @@
         <TextBlock Grid.Column="2" Grid.Row="2" Text="Kérdés:" Margin="10,10,2,2"/>
         <TextBox x:Name="textBoxQuestion" Grid.Column="3" Grid.Row="2" TabIndex="0" Background="White" Height="75" Width="300" Margin="2,10,2,2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 
-        <TextBlock Grid.Column="2" Grid.Row="3"  Grid.ColumnSpan="4" Margin="10,2,2,2" Text="Igen válasz esetén a félteke:"/>
-        <CheckBox x:Name="left" Content="bal"  FontWeight="DemiBold" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Right" Margin="0,6,20,0"/>
-        <CheckBox x:Name="right" Content="jobb"  FontWeight="DemiBold" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Right" Margin="0,6,96,0"/>
+        <Label Grid.Column="2" Grid.Row="3"  Grid.ColumnSpan="4" Margin="10,2,2,2" Content="Igen válasz esetén a félteke:"/>
+        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Margin="0,6,20,21" Orientation="Horizontal" Grid.Row="3">
+            <RadioButton x:Name="radioRight" GroupName="Felteke" Content="Jobb" IsChecked="True" Margin="0,0,30,0"/>
+            <RadioButton x:Name="radioLeft" GroupName="Felteke" Content="Bal" Margin="0,0,30,0" />
+        </StackPanel>
 
         <TextBlock Grid.Column="2" Grid.Row="4"  Grid.ColumnSpan="2" Margin="10,2,2,2" Text="A célcsoport életkor szerint:"/>
-        <CheckBox x:Name="child" Content="gyerek"  FontWeight="DemiBold" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Right" Margin="0,6,0,0"/>
-        <CheckBox x:Name="adult" Content="felnőtt"  FontWeight="DemiBold" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Right" Margin="0,6,84,0"/>
+
+        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Margin="0,4,0,0" Orientation="Horizontal" Grid.Row="4">
+            <RadioButton x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="0,0,30,0"/>
+            <RadioButton x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek" Margin="0,0,30,0" />
+        </StackPanel>
 
         <TextBlock Grid.Column="2" Grid.Row="5" Text="Kérdések:" Margin="10,38,3,0"/>
 
         <StackPanel Grid.Column="3" Grid.Row="5" Orientation="Vertical">
-            <Button x:Name="buttonSaveQuestion" Content="Mentés" Grid.Column="1" Grid.Row="3" Width="80" Height="30"  Margin="2,4,2,2"/>
-            <ListBox x:Name="listBoxQuestions" Width="auto" Height="230" Margin="2,4,2.4,4"/>
+            <Button x:Name="buttonSaveQuestion" Content="Mentés" Grid.Column="1" Grid.Row="3" Width="80" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
+            <ListBox x:Name="listBoxQuestions" Width="auto" Height="230" Margin="2,4,2.4,4" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Path=Text}" Height="20" Padding="0"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Szűrés:"/>
                 <CheckBox x:Name="checkBoxFilterRight" Content="jobb" FontWeight="DemiBold" Margin="8,2,0,0"/>

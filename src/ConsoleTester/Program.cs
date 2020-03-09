@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BusinessLogic;
+﻿using BusinessLogic;
 using DataAccess.Model;
 using DataAccess.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleTester
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             CreateAdminAndCheckLogin();
             AddQuestionsToDb();
@@ -60,18 +60,21 @@ namespace ConsoleTester
 
         private static void AddQuestionsToDb()
         {
+            Random random = new Random();
+
             using QuestionManager questionManager = new QuestionManager();
 
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Left, IsAdult = true, Text = "Kérdés1" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Left, IsAdult = true, Text = "Kérdés2" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Left, IsAdult = true, Text = "Kérdés3" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Left, IsAdult = true, Text = "Kérdés4" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Left, IsAdult = false, Text = "Kérdés5" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Right, IsAdult = true, Text = "Kérdés6" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Right, IsAdult = true, Text = "Kérdés7" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Right, IsAdult = true, Text = "Kérdés8" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Right, IsAdult = true, Text = "Kérdés9" });
-            questionManager.AddQuestion(new Question { Hemisphere = Hemisphere.Right, IsAdult = false, Text = "Kérdés10" });
+            for (int i = 0; i < 50; i++)
+            {
+                Question q = new Question()
+                {
+                    IsAdult = random.NextDouble() < 0.5,
+                    Hemisphere = random.NextDouble() < 0.5 ? Hemisphere.Left : Hemisphere.Right,
+                    Text = $"Question text #{random.Next()}"
+                };
+
+                questionManager.AddQuestion(q);
+            }
         }
     }
 }

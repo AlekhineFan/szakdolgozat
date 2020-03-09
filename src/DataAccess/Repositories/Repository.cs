@@ -23,10 +23,23 @@ namespace DataAccess.Repositories
             DbContext.SaveChanges();
         }
 
-        //TODO: Delete
+        public virtual void Delete(T obj)
+        {
+            DbContext.Remove(obj);
+            DbContext.SaveChanges();
+        }
 
         public IQueryable<T> GetAll()
         {
+            if (typeof(SoftDeletable).IsAssignableFrom(typeof(T)))
+            {
+                return DbContext
+                    .Set<T>()
+                    .Cast<SoftDeletable>()
+                    .Where(x => !x.IsDeleted)
+                    .Cast<T>();
+            }
+
             return DbContext.Set<T>();
         }
 

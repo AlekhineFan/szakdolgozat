@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using DataAccess.Model;
+﻿using DataAccess.Model;
 using DataAccess.Repositories;
+using System;
+using System.Linq;
 
 namespace BusinessLogic
 {
@@ -18,13 +18,16 @@ namespace BusinessLogic
         {
             bool isAdult = subject.Age >= 18;
 
-            return questionRepo.GetAll()
+            return GetAllQuestions()
                 .Where(q => q.IsAdult == isAdult)
-                .Take(5);                
+                .Take(5);
         }
 
         public void AddQuestion(Question question) => questionRepo.Create(question);
         public IQueryable<Question> GetAllQuestions() => questionRepo.GetAll();
+        public void Delete(Question question) => questionRepo.Delete(question);
+        public void SaveChanges() => questionRepo.SaveChanges();
+
         public void Dispose() => questionRepo?.Dispose();
     }
 }
