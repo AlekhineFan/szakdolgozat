@@ -4,9 +4,9 @@ using System;
 
 namespace HtmlStringToPdf
 {
-    public class GeneratePDF
+    public class PdfGenerator
     {
-        public Subject Subject { get; set; }
+        public Subject subject;
 
         private string BuildHeader(Subject subject)
         {
@@ -40,15 +40,15 @@ namespace HtmlStringToPdf
             return html + "</table>";
         }
 
-        public void WritePDF()
+        public void WritePDF(Subject subject)
         {
-            string header = BuildHeader(Subject);
-            string answers = BuildAnswersTable(Subject);
+            string header = BuildHeader(subject);
+            string answers = BuildAnswersTable(subject);
             string htmlSting = header + answers;
 
             HtmlToPdf converter = new HtmlToPdf();
             PdfDocument document = converter.ConvertHtmlString(htmlSting);
-            document.Save("teszt_eredmények");
+            document.Save($"{subject.Nickname} - {subject.SessionStartDate}");
             document.Close();
         }
     }

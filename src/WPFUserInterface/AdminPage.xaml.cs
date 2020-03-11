@@ -26,5 +26,10 @@ namespace WPFUserInterface
         {
             TestQuestions_Click(null, null);
         }
+
+        private void TestResultsToPdf_Click(object sender, RoutedEventArgs e)
+        {
+            frameMain.Content = new TestResultsPage();
+        }
     }
 }
