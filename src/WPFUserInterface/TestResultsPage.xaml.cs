@@ -1,25 +1,15 @@
 ﻿using BusinessLogic;
 using DataAccess.Model;
 using HtmlStringToPdf;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFUserInterface
 {
-    /// <summary>
-    /// Interaction logic for TestResultsPage.xaml
-    /// </summary>
     public partial class TestResultsPage : Page
     {
         private SubjectManager subjectManager;
@@ -34,7 +24,12 @@ namespace WPFUserInterface
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
         {
             subjectManager = new SubjectManager();
-            var subjects = subjectManager.GetAllSubjects().ToList();
+            var subjects = subjectManager
+                .GetAllSubjects()
+                .Include(subject => subject.QuestionAnswers)
+                .ThenInclude(answer => answer.Question)
+                .ToList();
+
             listBoxSubjects.ItemsSource = subjects;
         }
 
@@ -42,9 +37,30 @@ namespace WPFUserInterface
         {
             if (listBoxSubjects.SelectedItem == null)
                 return;
-            PdfGenerator generator = new PdfGenerator();
+
             Subject selectedSubject = (Subject)listBoxSubjects.SelectedItem;
-            generator.WritePDF(selectedSubject);
+            string fileName = $"{selectedSubject.Nickname} - {selectedSubject.SessionStartDate.ToString("yyyy-MM-dd HH.mm.ss")}";
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                CheckPathExists = true,
+                DefaultExt = "pdf",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                ValidateNames = true,
+                Filter = "PDF|*.pdf"
+            };
+
+            saveFileDialog.FileName = fileName;
+
+            bool? result = saveFileDialog.ShowDialog();
+            if (result != true)
+                return;
+
+            PdfGenerator generator = new PdfGenerator();
+            string path = saveFileDialog.FileName;
+            generator.WritePDF(selectedSubject, path);
+
+            MessageBox.Show($"Mentés sikeres:\n{path}", "Mentés kész", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

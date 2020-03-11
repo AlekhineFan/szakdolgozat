@@ -1,10 +1,7 @@
 ﻿using DataAccess.Model;
 using DataAccess.Repositories;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BusinessLogic
 {
@@ -23,10 +20,8 @@ namespace BusinessLogic
         }
         public void Dispose()
         {
-            if (subjectRepository == null)
-            {
-                Dispose();
-            }
+            if (subjectRepository != null)
+                subjectRepository.Dispose();
         }
     }
 }

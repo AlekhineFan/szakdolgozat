@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\binaries\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Select.HtmlToPdf.NetCore" Version="19.2.0" />
   </ItemGroup>

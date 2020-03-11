@@ -1,6 +1,5 @@
 ﻿using DataAccess.Model;
 using SelectPdf;
-using System;
 
 namespace HtmlStringToPdf
 {
@@ -17,7 +16,7 @@ namespace HtmlStringToPdf
                 $"<p>tesztalany neve:{subject.Nickname}</p>" +
                 $"<p><b>életkor:{subject.Age}</b></p>" +
                 $"<p><b>nem:{subject.Gender.ToString()}</b></p>" +
-                $"<p><b>kitöltés időpontja:{DateTime.Now}</b></p>" +
+                $"<p><b>kitöltés időpontja:{subject.SessionStartDate.ToString("yyyy.MM.dd HH:mm:ss")}</b></p>" +
                 "<p><i>eredmény:</i><p >" +
                 "<hr>";
 
@@ -40,15 +39,15 @@ namespace HtmlStringToPdf
             return html + "</table>";
         }
 
-        public void WritePDF(Subject subject)
+        public void WritePDF(Subject subject, string path)
         {
             string header = BuildHeader(subject);
             string answers = BuildAnswersTable(subject);
-            string htmlSting = header + answers;
+            string htmlString = header + answers;
 
             HtmlToPdf converter = new HtmlToPdf();
-            PdfDocument document = converter.ConvertHtmlString(htmlSting);
-            document.Save($"{subject.Nickname} - {subject.SessionStartDate}");
+            PdfDocument document = converter.ConvertHtmlString(htmlString);
+            document.Save(path);
             document.Close();
         }
     }
