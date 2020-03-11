@@ -1,0 +1,13 @@
+﻿<Page x:Class="WPFUserInterface.PleaseWaitPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFUserInterface"
+      mc:Ignorable="d"
+      d:DesignHeight="200" d:DesignWidth="300"
+      Title="PleaseWaitPage">
+    <Grid Background="Beige">
+        <Label Content="Kérem várjon..." FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Page>

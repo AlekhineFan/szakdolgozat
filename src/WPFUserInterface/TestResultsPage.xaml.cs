@@ -13,12 +13,14 @@ namespace WPFUserInterface
     public partial class TestResultsPage : Page
     {
         private SubjectManager subjectManager;
+        private readonly LoadingScreenController loadingScreen;
 
         public object PdfGenerator { get; private set; }
 
-        public TestResultsPage()
+        public TestResultsPage(LoadingScreenController loadingScreen)
         {
             InitializeComponent();
+            this.loadingScreen = loadingScreen;
         }
 
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ namespace WPFUserInterface
             listBoxSubjects.ItemsSource = subjects;
         }
 
-        private void buttonPdf_Click(object sender, RoutedEventArgs e)
+        private async void buttonPdf_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxSubjects.SelectedItem == null)
                 return;
@@ -58,7 +60,9 @@ namespace WPFUserInterface
 
             PdfGenerator generator = new PdfGenerator();
             string path = saveFileDialog.FileName;
-            generator.WritePDF(selectedSubject, path);
+
+            await loadingScreen.DoActionWhileLoadingScreenAsync(
+                () => generator.WritePDF(selectedSubject, path));
 
             MessageBox.Show($"Mentés sikeres:\n{path}", "Mentés kész", MessageBoxButton.OK, MessageBoxImage.Information);
         }

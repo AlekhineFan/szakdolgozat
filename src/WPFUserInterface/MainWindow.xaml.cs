@@ -10,9 +10,12 @@ namespace WPFUserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly LoadingScreenController loadingScreenController;
+
         public MainWindow()
         {
             InitializeComponent();
+            loadingScreenController = new LoadingScreenController(frameMain);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -49,7 +52,7 @@ namespace WPFUserInterface
 
         private void OpenAdminPage()
         {
-            AdminPage adminPage = new AdminPage();
+            AdminPage adminPage = new AdminPage(loadingScreenController);
             adminPage.Finished += (_, __) => OpenWelcomePage();
             frameMain.Content = adminPage;
         }
