@@ -1,5 +1,9 @@
-﻿using SelectPdf;
+﻿using CoreHtmlToImage;
+using SelectPdf;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace HtmlStringToPdf
 {
@@ -7,7 +11,7 @@ namespace HtmlStringToPdf
     {
         static void Main(string[] args)
         {
-            var myHtml = "<head> " +
+            var myHtml = "<head><meta charset='UTF8'> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszterdmények</h1>" +
                 "<p>tesztvezető neve:</p>" +
@@ -40,10 +44,20 @@ namespace HtmlStringToPdf
                 "</tr>" +
                 "</table>";
 
-            HtmlToPdf converter = new HtmlToPdf();
-            PdfDocument doc = converter.ConvertHtmlString(myHtml);
-            doc.Save("teszt_eredmények.pdf");
-            doc.Close();
+            File.WriteAllText("../testHtml.html", myHtml);
+
+            void HtmlToImage(string htmlString)
+            {
+                var converter = new HtmlConverter();
+                var bytes = converter.FromHtmlString(htmlString);
+                File.WriteAllBytes("../testImage2.jpg", bytes);
+            }
+            HtmlToImage(myHtml);
+
+            //HtmlToPdf converter = new HtmlToPdf();
+            //PdfDocument doc = converter.ConvertHtmlString(myHtml);
+            //doc.Save("teszt_eredmények.pdf");
+            //doc.Close();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using BusinessLogic;
+using CoreHtmlToImage;
 using DataAccess.Model;
 using SelectPdf;
+using System.IO;
 
 namespace HtmlStringToPdf
 {
@@ -39,6 +41,18 @@ namespace HtmlStringToPdf
                 questionNumber++;
             }
             return html + "</table>";
+        }
+
+
+        public void ConvertHtmlToImage(Subject subject)
+        {
+            string header = BuildHeader(subject);
+            string answers = BuildAnswersTable(subject);
+            string htmlString = header + answers;
+
+            var converter = new HtmlConverter();
+            var bytes = converter.FromHtmlString(htmlString);
+            File.WriteAllBytes($"../{subject.Nickname}.jpg", bytes);
         }
 
         public void WritePDF(Subject subject, string path)

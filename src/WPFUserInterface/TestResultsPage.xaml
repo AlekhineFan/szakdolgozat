@@ -28,6 +28,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
         <Button x:Name="buttonPdf" Grid.Column="1" Grid.Row="2" Content="Eremények mentése PDF-ként" Height="30" Width="auto" Click="buttonPdf_Click"/>
+        <Button x:Name="buttonPreviewPdf" Grid.Column="1" Grid.Row="2" Content="Előnézet megtekintése" Height="30" Width="auto" Click="buttonPreviewPdf_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

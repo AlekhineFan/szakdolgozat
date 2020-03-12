@@ -7,6 +7,8 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace WPFUserInterface
 {
@@ -65,6 +67,26 @@ namespace WPFUserInterface
                 () => generator.WritePDF(selectedSubject, path));
 
             MessageBox.Show($"Mentés sikeres:\n{path}", "Mentés kész", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void buttonPreviewPdf_Click(object sender, RoutedEventArgs e)
+        {
+            Subject selectedSubject = (Subject)listBoxSubjects.SelectedItem;
+            if (selectedSubject == null)
+                return;
+
+            PdfGenerator pdfGenerator = new PdfGenerator();
+            pdfGenerator.ConvertHtmlToImage(selectedSubject);
+
+            ImageBrush image = new ImageBrush();
+            Uri htmlFile = new Uri(@"C:\Users\szavi\AppData\Local\Temp\testHtml.bmp");
+            BitmapImage bitmapImage = new BitmapImage(htmlFile);
+            image.ImageSource = bitmapImage;
+
+            Window previewWindow = new Window();
+            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            previewWindow.Background = image;
+            previewWindow.ShowDialog();
         }
     }
 }
