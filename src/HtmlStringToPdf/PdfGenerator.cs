@@ -1,23 +1,25 @@
-﻿using DataAccess.Model;
+﻿using BusinessLogic;
+using DataAccess.Model;
 using SelectPdf;
 
 namespace HtmlStringToPdf
 {
     public class PdfGenerator
     {
-        public Subject subject;
+        public Subject Subject { get; set; }
 
         private string BuildHeader(Subject subject)
         {
+            TestEvaluation evaluation = new TestEvaluation(Subject);
             string header = $"<head> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszt eredmények</h1>" +
                 "<p>tesztvezető neve:</p>" +
-                $"<p>tesztalany neve:{subject.Nickname}</p>" +
-                $"<p><b>életkor:{subject.Age}</b></p>" +
-                $"<p><b>nem:{subject.Gender.ToString()}</b></p>" +
-                $"<p><b>kitöltés időpontja:{subject.SessionStartDate.ToString("yyyy.MM.dd HH:mm:ss")}</b></p>" +
-                "<p><i>eredmény:</i><p >" +
+                $"<p>tesztalany neve: {subject.Nickname}</p>" +
+                $"<p><b>életkor: {subject.Age}</b></p>" +
+                $"<p><b>nem: {subject.Gender.ToString()}</b></p>" +
+                $"<p><b>kitöltés időpontja: {subject.SessionStartDate.ToString("yyyy.MM.dd HH:mm:ss")}</b></p>" +
+                $"<p><i>eredmény: {evaluation.Evaluate(subject).ToString()}</i><p >"+
                 "<hr>";
 
             return header;
