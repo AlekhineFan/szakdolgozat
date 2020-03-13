@@ -81,7 +81,7 @@ namespace WPFUserInterface
 
         private void QuizEndPage_Finished(object sender, EventArgs e)
         {
-            OpenSubjectLoginPage();
+            OpenWelcomePage();
         }
     }
 }

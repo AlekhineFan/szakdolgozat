@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Agyfélteke teszt" Height="550" Width="500"
         Background="{StaticResource ResourceKey=nsysc}"
+        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Grid>
         <Frame x:Name="frameMain" NavigationUIVisibility="Hidden">

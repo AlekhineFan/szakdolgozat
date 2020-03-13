@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
-      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:SubjectLoginPage, IsDesignTimeCreatable=True}"
@@ -36,7 +35,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
             <TextBlock Text="Életkor" FontWeight="Bold" Margin="0,8"/>
-            <xctk:IntegerUpDown Value="25" x:Name="integerUpDownAge" Width="140" Height="30" Margin="10,5,10,10"/>
+            <TextBox x:Name="textBoxAge" Height="30" Width="140" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
             <TextBlock Text="Név" FontWeight="Bold" Margin="0,5,58,0"/>

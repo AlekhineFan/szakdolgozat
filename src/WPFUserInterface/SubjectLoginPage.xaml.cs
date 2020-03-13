@@ -14,7 +14,7 @@ namespace WPFUserInterface
         private readonly SubjectRepository subjectRepository = new SubjectRepository();
 
         public event EventHandler<Subject> Finished;
-        public string SubjectName { get; set; } = "Subject123";
+        public string SubjectName { get; set; }
         public Regex Regex { get; set; }
 
         public SubjectLoginPage()
@@ -38,10 +38,19 @@ namespace WPFUserInterface
                     return;
                 }
 
+                Regex = new Regex(@"^[1-9][0-9]{1,3}");
+
+                if (!Regex.IsMatch(textBoxAge.Text))
+                {
+                    MessageBox.Show("Adjon megy egy érvényes életkort!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    textBoxAge.Clear();
+                    return;
+                }
+
                 Subject subject = new Subject()
                 {
                     Nickname = textBoxSubjectName.Text,
-                    Age = (int)integerUpDownAge.Value,
+                    Age = Convert.ToInt32(textBoxAge.Text),
                     Gender = radioButtonMale.IsChecked == true? Gender.Male : Gender.Female,
                     SessionStartDate = DateTime.Now,
                     QuestionAnswers = new List<QuestionAnswer>()

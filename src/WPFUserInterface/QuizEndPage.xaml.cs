@@ -20,5 +20,6 @@ namespace WPFUserInterface
         {
             Finished?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }

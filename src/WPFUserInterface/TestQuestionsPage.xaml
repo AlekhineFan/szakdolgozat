@@ -35,7 +35,7 @@
                 <TextBlock Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
             </StackPanel>
             
-            <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Value.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto"/>
+            <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Value.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto" IsReadOnly="True"/>
             
             <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                 <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="15,5,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
