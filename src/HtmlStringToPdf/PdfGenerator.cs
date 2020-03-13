@@ -13,7 +13,7 @@ namespace HtmlStringToPdf
         private string BuildHeader(Subject subject)
         {
             TestEvaluation evaluation = new TestEvaluation(Subject);
-            string header = $"<head> " +
+            string header = $"<head><meta charset='UTF8'> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszt eredmények</h1>" +
                 "<p>tesztvezető neve:</p>" +
@@ -52,7 +52,11 @@ namespace HtmlStringToPdf
 
             var converter = new HtmlConverter();
             var bytes = converter.FromHtmlString(htmlString);
-            File.WriteAllBytes($"../{subject.Nickname}.jpg", bytes);
+
+            string outputPath = Path.GetTempPath();
+            string fileNameWithPath = $"{outputPath}/{subject.Nickname}.jpg";
+
+            File.WriteAllBytes(fileNameWithPath, bytes);
         }
 
         public void WritePDF(Subject subject, string path)

@@ -4,6 +4,7 @@ using HtmlStringToPdf;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -78,8 +79,12 @@ namespace WPFUserInterface
             PdfGenerator pdfGenerator = new PdfGenerator();
             pdfGenerator.ConvertHtmlToImage(selectedSubject);
 
+            string inputPath = Path.GetTempPath();
+            string inputFileNameWithPath = $"{inputPath}/{selectedSubject.Nickname}.jpg";
+            Uri htmlFile = new Uri(inputFileNameWithPath);
+
+
             ImageBrush image = new ImageBrush();
-            Uri htmlFile = new Uri(@"C:\Users\szavi\AppData\Local\Temp\testHtml.bmp");
             BitmapImage bitmapImage = new BitmapImage(htmlFile);
             image.ImageSource = bitmapImage;
 
