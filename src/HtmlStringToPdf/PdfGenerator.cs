@@ -2,7 +2,6 @@
 using CoreHtmlToImage;
 using DataAccess.Model;
 using SelectPdf;
-using System.IO;
 
 namespace HtmlStringToPdf
 {
@@ -21,7 +20,7 @@ namespace HtmlStringToPdf
                 $"<p><b>életkor: {subject.Age}</b></p>" +
                 $"<p><b>nem: {subject.Gender.ToString()}</b></p>" +
                 $"<p><b>kitöltés időpontja: {subject.SessionStartDate.ToString("yyyy.MM.dd HH:mm:ss")}</b></p>" +
-                $"<p><i>eredmény: {evaluation.Evaluate(subject).ToString()}</i><p >"+
+                $"<p><i>eredmény: {evaluation.Evaluate(subject).ToString()}</i><p >" +
                 "<hr>";
 
             return header;
@@ -44,19 +43,15 @@ namespace HtmlStringToPdf
         }
 
 
-        public void ConvertHtmlToImage(Subject subject)
+        public byte[] ConvertHtmlToImage(Subject subject)
         {
             string header = BuildHeader(subject);
             string answers = BuildAnswersTable(subject);
             string htmlString = header + answers;
 
             var converter = new HtmlConverter();
-            var bytes = converter.FromHtmlString(htmlString);
-
-            string outputPath = Path.GetTempPath();
-            string fileNameWithPath = $"{outputPath}/{subject.Nickname}.jpg";
-
-            File.WriteAllBytes(fileNameWithPath, bytes);
+            byte[] bytes = converter.FromHtmlString(htmlString);
+            return bytes;
         }
 
         public void WritePDF(Subject subject, string path)

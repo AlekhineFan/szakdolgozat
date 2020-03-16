@@ -4,10 +4,10 @@ using HtmlStringToPdf;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -77,20 +77,24 @@ namespace WPFUserInterface
                 return;
 
             PdfGenerator pdfGenerator = new PdfGenerator();
-            pdfGenerator.ConvertHtmlToImage(selectedSubject);
-
-            string inputPath = Path.GetTempPath();
-            string inputFileNameWithPath = $"{inputPath}/{selectedSubject.Nickname}.jpg";
-            Uri htmlFile = new Uri(inputFileNameWithPath);
-
-
-            ImageBrush image = new ImageBrush();
-            BitmapImage bitmapImage = new BitmapImage(htmlFile);
-            image.ImageSource = bitmapImage;
+            byte[] imageBytes = pdfGenerator.ConvertHtmlToImage(selectedSubject);
 
             Window previewWindow = new Window();
-            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            previewWindow.Background = image;
+            previewWindow.PreviewKeyDown += (sender, e) =>
+            {
+                if (e.Key == Key.Escape)
+                    previewWindow.Close();
+            };
+            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            BitmapSource bitmapSource = (BitmapSource)new ImageSourceConverter().ConvertFrom(imageBytes);
+            previewWindow.Content = new Image
+            {
+                Source = bitmapSource
+            };
+
+            previewWindow.Height = bitmapSource.Height;
+            previewWindow.Width = bitmapSource.Width;
             previewWindow.ShowDialog();
         }
     }

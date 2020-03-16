@@ -1,8 +1,6 @@
 ﻿using DataAccess.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BusinessLogic
 {
@@ -46,11 +44,5 @@ namespace BusinessLogic
 
             return percentage;
         }
-
-        //public override string ToString()
-        //{
-        //    return $"jobb agyfélteke: {Evaluate(Subject).RightPercentage.ToString()}, bal agyfélteke: {Evaluate(Subject).LeftPercentage.ToString()}";
-        //}
-
     }
 }
