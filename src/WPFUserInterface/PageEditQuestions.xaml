@@ -47,7 +47,7 @@
 
         <StackPanel Grid.Column="3" Grid.Row="5" Orientation="Vertical">
             <Button x:Name="buttonSaveQuestion" Content="Mentés" Grid.Column="1" Grid.Row="3" Width="80" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
-            <ListBox x:Name="listBoxQuestions" Width="auto" Height="230" Margin="2,4,2.4,4" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
+            <ListBox ItemsSource="{Binding QuestionsView}" x:Name="listBoxQuestions" Width="auto" Height="230" Margin="2,4,2.4,4" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Label Content="{Binding Path=Text}" Height="20" Padding="0"/>
@@ -56,10 +56,10 @@
             </ListBox>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Szűrés:"/>
-                <CheckBox x:Name="checkBoxFilterRight" Content="jobb" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterLeft" Content="bal" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterAdult" Content="felnőtt" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterChild" Content="gyerek" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox x:Name="checkBoxFilterRight" Content="jobb" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox x:Name="checkBoxFilterLeft" Content="bal" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox x:Name="checkBoxFilterAdult" Content="felnőtt" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox x:Name="checkBoxFilterChild" Content="gyerek" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
             </StackPanel>
             <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" Width="125" Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center"/>
         </StackPanel>
