@@ -30,9 +30,9 @@ namespace WPFUserInterface
             frameMain.Content = new TestResultsPage(loadingScreenController);
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void NewQuestion_Click(object sender, RoutedEventArgs e)
         {
-
+            frameMain.Content = new NewQuestionPage();
         }
     }
 }

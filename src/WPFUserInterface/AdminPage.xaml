@@ -22,6 +22,7 @@
             <Menu x:Name="menuMain" DockPanel.Dock="Top">
                 <MenuItem Header="Tesztkérdések">
                     <MenuItem Header="Szerkesztés" Click="TestQuestions_Click"/>
+                    <MenuItem Header="Új kérdés" Click="NewQuestion_Click"/>
                 </MenuItem>
                 <MenuItem Header="Teszteredmények exportálása PDF-be" Click="TestResultsToPdf_Click"/>
                 <MenuItem Header="Kijelentkezés" Click="Logout_Click"/>
