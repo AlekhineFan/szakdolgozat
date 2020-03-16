@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BusinessLogic;
+using DataAccess.Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFUserInterface
 {
@@ -18,9 +11,37 @@ namespace WPFUserInterface
     /// </summary>
     public partial class NewQuestionPage : Page
     {
+        public event EventHandler Finished;
         public NewQuestionPage()
         {
             InitializeComponent();
+        }
+
+        private void BackToAdminpage_Click(object sender, RoutedEventArgs e)
+        {
+            Finished?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Validate
+            string questionText = textBoxQuestion.Text;
+            Hemisphere hemisphere = radioLeft.IsChecked.Value ? Hemisphere.Left : Hemisphere.Right;
+            bool isAdult = radioAdult.IsChecked.Value;
+
+            Question question = new Question
+            {
+                Text = questionText,
+                IsAdult = isAdult,
+                Hemisphere = hemisphere
+            };
+
+            using (QuestionManager questionManager = new QuestionManager())
+            {
+                questionManager.AddQuestion(question);
+            }
+
+            MessageBox.Show("Sikeres mentés!");
         }
     }
 }

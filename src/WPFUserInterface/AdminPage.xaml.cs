@@ -32,7 +32,14 @@ namespace WPFUserInterface
 
         private void NewQuestion_Click(object sender, RoutedEventArgs e)
         {
-            frameMain.Content = new NewQuestionPage();
+            NewQuestionPage newQuestionPage = new NewQuestionPage();
+            newQuestionPage.Finished += NewQuestionPage_Finished;
+            frameMain.Content = newQuestionPage;
+        }
+
+        private void NewQuestionPage_Finished(object sender, EventArgs e)
+        {
+            frameMain.Content = null;
         }
     }
 }
