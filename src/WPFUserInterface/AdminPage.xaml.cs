@@ -1,9 +1,6 @@
-﻿using DataAccess.Model;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace WPFUserInterface
 {
@@ -16,13 +13,6 @@ namespace WPFUserInterface
         {
             InitializeComponent();
             this.loadingScreenController = loadingScreenController;
-            Loaded += AdminPage_Loaded_Once;
-        }
-
-        private void AdminPage_Loaded_Once(object sender, RoutedEventArgs e)
-        {
-            TestQuestions_Click(null, null);
-            Loaded -= AdminPage_Loaded_Once;
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
@@ -38,6 +28,11 @@ namespace WPFUserInterface
         private void TestResultsToPdf_Click(object sender, RoutedEventArgs e)
         {
             frameMain.Content = new TestResultsPage(loadingScreenController);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
