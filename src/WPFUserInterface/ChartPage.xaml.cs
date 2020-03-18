@@ -1,79 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using BusinessLogic;
 using LiveCharts;
-using LiveCharts.Defaults;
-using LiveCharts.Charts;
 using LiveCharts.Wpf;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Controls;
+using ScatterPoint = LiveCharts.Defaults.ScatterPoint;
 
 namespace WPFUserInterface
 {
-    /// <summary>
-    /// Interaction logic for ChartPage.xaml
-    /// </summary>
-    public partial class ChartPage : Page
+    public partial class ChartPage : Page, INotifyPropertyChanged
     {
+        public SeriesCollection SeriesCollection { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private ChartDataProvider chartDataProvider;
+
         public ChartPage()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+
+        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            chartDataProvider = new ChartDataProvider();
+            ChartData chartData = chartDataProvider.GetChartData();
+
+            ScatterPoint[] malePoints = chartData.MaleScatterPoints
+                .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
+                .ToArray();
+
+            ScatterPoint[] femalePoints = chartData.FemaleScatterPoints
+                .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
+                .ToArray();
 
             SeriesCollection = new SeriesCollection
             {
                 new ScatterSeries
                 {
-                    Values = new ChartValues<ScatterPoint>
-                    {
-                        new ScatterPoint(5, 5, 20),
-                        new ScatterPoint(3, 4, 80),
-                        new ScatterPoint(7, 2, 20),
-                        new ScatterPoint(2, 6, 60),
-                        new ScatterPoint(8, 2, 70)
-                    },
+                    Title = "Férfi",
+                    PointGeometry = DefaultGeometries.Circle,
                     MinPointShapeDiameter = 15,
-                    MaxPointShapeDiameter = 45
+                    MaxPointShapeDiameter = 45,
+                    Values = new ChartValues<ScatterPoint>(malePoints)
                 },
                 new ScatterSeries
                 {
-                    Values = new ChartValues<ScatterPoint>
-                    {
-                        new ScatterPoint(7, 5, 1),
-                        new ScatterPoint(2, 2, 1),
-                        new ScatterPoint(1, 1, 1),
-                        new ScatterPoint(6, 3, 1),
-                        new ScatterPoint(8, 8, 1)
-                    },
+                    Title = "Nő",
                     PointGeometry = DefaultGeometries.Triangle,
                     MinPointShapeDiameter = 15,
-                    MaxPointShapeDiameter = 45
-                }
+                    MaxPointShapeDiameter = 45,
+                    Values = new ChartValues<ScatterPoint>(femalePoints)
+                },
             };
-
-            DataContext = this;
-        }
-        public SeriesCollection SeriesCollection { get; set; }
-
-        private void UpdateAllOnClick(object sender, RoutedEventArgs e)
-        {
-            var r = new Random();
-            foreach (var series in SeriesCollection)
-            {
-                foreach (var bubble in series.Values.Cast<ScatterPoint>())
-                {
-                    bubble.X = r.NextDouble() * 10;
-                    bubble.Y = r.NextDouble() * 10;
-                    bubble.Weight = r.NextDouble() * 10;
-                }
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SeriesCollection)));
         }
     }
 }

@@ -4,25 +4,18 @@ using System.Linq;
 
 namespace BusinessLogic
 {
-    public partial class TestEvaluation
+    public class TestEvaluator
     {
-        public Subject Subject { get; set; }
-
-        public TestEvaluation(Subject subject)
-        {
-            Subject = subject;
-        }
-
         public HemispherePercentage Evaluate(Subject subject)
         {
             HemispherePercentage percentage = new HemispherePercentage();
 
             int numberOfQuestions = subject.QuestionAnswers.Count();
-            int answersForRight = subject.QuestionAnswers.Where(q => q.Question.Hemisphere == Hemisphere.Right && q.Answer == true).Count();
-            int answersForLeft = subject.QuestionAnswers.Where(q => q.Question.Hemisphere == Hemisphere.Left && q.Answer == true).Count();
+            int answersForRight = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Right && qa.Answer == true).Count();
+            int answersForLeft = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Left && qa.Answer == true).Count();
 
             double rightPerc = Math.Round(answersForRight / ((answersForRight + answersForLeft) * 0.01), 2);
-            double leftPerc = Math.Round(answersForLeft / ((answersForRight + answersForLeft) * 0.01), 2);
+            double leftPerc = 1 - rightPerc;
 
             if (Double.IsNaN(rightPerc))
             {

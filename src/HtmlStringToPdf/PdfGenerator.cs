@@ -11,7 +11,7 @@ namespace HtmlStringToPdf
 
         private string BuildHeader(Subject subject)
         {
-            TestEvaluation evaluation = new TestEvaluation(Subject);
+            TestEvaluator evaluation = new TestEvaluator();
             string header = $"<head><meta charset='UTF8'> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszt eredmények</h1>" +
