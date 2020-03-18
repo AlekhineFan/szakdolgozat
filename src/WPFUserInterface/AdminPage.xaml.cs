@@ -41,5 +41,11 @@ namespace WPFUserInterface
         {
             frameMain.Content = null;
         }
+
+        private void ChartPage_Click(object sender, RoutedEventArgs e)
+        {
+            ChartPage chartPage = new ChartPage();
+            frameMain.Content = chartPage;
+        }
     }
 }

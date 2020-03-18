@@ -25,6 +25,7 @@
                     <MenuItem Header="Új kérdés" Click="NewQuestion_Click"/>
                 </MenuItem>
                 <MenuItem Header="Teszteredmények exportálása PDF-be" Click="TestResultsToPdf_Click"/>
+                <MenuItem Header="Statisztika" Click="ChartPage_Click"/>
                 <MenuItem Header="Kijelentkezés" Click="Logout_Click"/>
             </Menu>
         </DockPanel>

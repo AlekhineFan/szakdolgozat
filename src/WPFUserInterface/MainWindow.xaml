@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUserInterface"
         mc:Ignorable="d"
-        Title="Agyfélteke teszt" Height="550" Width="500"
-        Background="{StaticResource ResourceKey=nsysc}"
+        Title="Agyfélteke teszt" Height="600" Width="800"
+        Background="{StaticResource ResourceKey=nsys}"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Grid>
