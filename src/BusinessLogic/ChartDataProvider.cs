@@ -29,7 +29,6 @@ namespace BusinessLogic
             }
 
             List<ScatterPoint> scatterPoints = new List<ScatterPoint>();
-
             for (int perc = 0; perc < weights.GetLength(0); perc++)
             {
                 for (int age = 0; age < weights.GetLength(1); age++)
@@ -40,6 +39,7 @@ namespace BusinessLogic
                 }
             }
 
+            // TODO: female points!
             return new ChartData(scatterPoints, new List<ScatterPoint>());
         }
     }
