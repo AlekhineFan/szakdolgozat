@@ -15,7 +15,7 @@ namespace BusinessLogic
             int answersForLeft = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Left && qa.Answer == true).Count();
 
             double rightPerc = Math.Round(answersForRight / ((answersForRight + answersForLeft) * 0.01), 2);
-            double leftPerc = 1 - rightPerc;
+            double leftPerc = 100 - rightPerc;
 
             if (Double.IsNaN(rightPerc))
             {

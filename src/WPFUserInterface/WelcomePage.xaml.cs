@@ -22,7 +22,7 @@ namespace WPFUserInterface
         }
 
         private void BeginTestButton_Click(object sender, RoutedEventArgs e)
-        {
+        {          
             Finished?.Invoke(this, LoginType.Subject);
         }
     }

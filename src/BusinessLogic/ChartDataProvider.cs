@@ -12,15 +12,23 @@ namespace BusinessLogic
             SubjectManager subjectManager = new SubjectManager();
             TestEvaluator testEvaluator = new TestEvaluator();
 
-            Subject[] subjects = subjectManager
+            Subject[] maleSubjects = subjectManager
                 .GetAllSubjects()
+                .Where(x => x.Gender == Gender.Male)
+                .Include(x => x.QuestionAnswers)
+                .ThenInclude(x => x.Question)
+                .ToArray();
+
+            Subject[] femaleSubjects = subjectManager
+                .GetAllSubjects()
+                .Where(x => x.Gender == Gender.Female)
                 .Include(x => x.QuestionAnswers)
                 .ThenInclude(x => x.Question)
                 .ToArray();
 
             int[,] weights = new int[101, 100]; // rightPercentage, age
 
-            foreach (Subject subject in subjects)
+            foreach (Subject subject in maleSubjects)
             {
                 HemispherePercentage hemispherePercentage = testEvaluator.Evaluate(subject);
                 int rightPercentage = (int)hemispherePercentage.RightPercentage;

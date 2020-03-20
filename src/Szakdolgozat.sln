@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTester", "ConsoleTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{181E9630-7DD2-479F-A5BC-813F46F590BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlStringToPdf", "HtmlStringToPdf\HtmlStringToPdf.csproj", "{A36020E2-BD8F-4F13-B6F6-1756962A30E8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181E9630-7DD2-479F-A5BC-813F46F590BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A36020E2-BD8F-4F13-B6F6-1756962A30E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

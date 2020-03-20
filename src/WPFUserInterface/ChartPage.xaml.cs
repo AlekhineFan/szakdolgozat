@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using LiveCharts;
+using System.Collections.Generic;
 using LiveCharts.Wpf;
 using System.ComponentModel;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace WPFUserInterface
             {
                 new ScatterSeries
                 {
-                    Title = "Férfi",
+                    Title= "Férfi",
                     PointGeometry = DefaultGeometries.Circle,
                     MinPointShapeDiameter = 15,
                     MaxPointShapeDiameter = 45,
