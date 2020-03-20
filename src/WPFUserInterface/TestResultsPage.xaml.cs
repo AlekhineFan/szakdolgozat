@@ -62,8 +62,7 @@ namespace WPFUserInterface
                 return;
 
             PdfGenerator generator = new PdfGenerator();
-            HtmlProvider htmlProvider = new HtmlProvider(selectedSubject);
-            generator.HtmlProvider = htmlProvider;
+            generator.HtmlProvider = new HtmlProvider(selectedSubject);
             string path = saveFileDialog.FileName;
 
             await loadingScreen.DoActionWhileLoadingScreenAsync(
@@ -78,9 +77,8 @@ namespace WPFUserInterface
             if (selectedSubject == null)
                 return;
 
-            HtmlProvider htmlProvider = new HtmlProvider(selectedSubject);
             PreviewImageProvider previewProvider = new PreviewImageProvider();
-            previewProvider.HtmlProvider = htmlProvider;
+            previewProvider.HtmlProvider = new HtmlProvider(selectedSubject);
             byte[] imageBytes = previewProvider.ConvertHtmlToImage();
 
             Window previewWindow = new Window();
