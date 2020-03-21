@@ -77,7 +77,7 @@ namespace WPFUserInterface
             if (selectedSubject == null)
                 return;
 
-            PreviewImageProvider previewProvider = new PreviewImageProvider();
+            PreviewImageGenerator previewProvider = new PreviewImageGenerator();
             previewProvider.HtmlProvider = new HtmlProvider(selectedSubject);
             byte[] imageBytes = previewProvider.ConvertHtmlToImage();
 

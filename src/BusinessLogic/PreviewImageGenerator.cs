@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BusinessLogic
 {
-    public class PreviewImageProvider
+    public class PreviewImageGenerator
     {
         public HtmlProvider HtmlProvider {get; set;}
 
