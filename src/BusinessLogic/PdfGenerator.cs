@@ -8,11 +8,9 @@ namespace HtmlStringToPdf
     public class PdfGenerator
     {
         public HtmlProvider HtmlProvider { get; set; }
-        public Subject Subject { get; set; }
 
-        public void WritePDF(Subject subject, string path)
+        public void WritePDF(string path)
         {
-            TestEvaluator evaluation = new TestEvaluator();
             string html = HtmlProvider.GetHtml();
 
             HtmlToPdf converter = new HtmlToPdf();

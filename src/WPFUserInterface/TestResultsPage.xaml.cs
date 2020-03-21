@@ -66,7 +66,7 @@ namespace WPFUserInterface
             string path = saveFileDialog.FileName;
 
             await loadingScreen.DoActionWhileLoadingScreenAsync(
-                () => generator.WritePDF(selectedSubject, path));
+                () => generator.WritePDF(path));
 
             MessageBox.Show($"Mentés sikeres:\n{path}", "Mentés kész", MessageBoxButton.OK, MessageBoxImage.Information);
         }
