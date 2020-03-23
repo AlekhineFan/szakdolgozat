@@ -24,13 +24,14 @@ namespace WPFUserInterface
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             chartDataProvider = new ChartDataProvider();
-            ChartData chartData = chartDataProvider.GetChartData();
+            ChartData malechartData = chartDataProvider.GetMaleChartData();
+            ChartData femaleChartData = chartDataProvider.GetFemaleChartData();
 
-            ScatterPoint[] malePoints = chartData.MaleScatterPoints
+            ScatterPoint[] malePoints = malechartData.MaleScatterPoints
                 .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
                 .ToArray();
 
-            ScatterPoint[] femalePoints = chartData.FemaleScatterPoints
+            ScatterPoint[] femalePoints = femaleChartData.FemaleScatterPoints
                 .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
                 .ToArray();
 
