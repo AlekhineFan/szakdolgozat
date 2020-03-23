@@ -38,9 +38,7 @@ namespace WPFUserInterface
                     return;
                 }
 
-                Regex = new Regex(@"^[1-9][0-9]{1,3}");
-
-                if (!Regex.IsMatch(textBoxAge.Text))
+                if (!(int.TryParse(textBoxAge.Text, out int age) && age < 101))
                 {
                     MessageBox.Show("Adjon megy egy érvényes életkort!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
                     textBoxAge.Clear();
