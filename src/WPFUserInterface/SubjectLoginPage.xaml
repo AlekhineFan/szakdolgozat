@@ -35,11 +35,11 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
             <TextBlock Text="Életkor" FontWeight="Bold" Margin="0,8"/>
-            <TextBox x:Name="textBoxAge" Height="30" Width="140" Margin="10,0,0,0"/>
+            <TextBox x:Name="textBoxAge" Height="30" Width="140" Margin="10,0,0,0" TabIndex="0"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
             <TextBlock Text="Név" FontWeight="Bold" Margin="0,5,58,0"/>
-            <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown"/>
+            <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown" TabIndex="1"/>
         </StackPanel>
 
 

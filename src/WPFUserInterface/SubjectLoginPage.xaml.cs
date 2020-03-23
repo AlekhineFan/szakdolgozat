@@ -21,7 +21,7 @@ namespace WPFUserInterface
         {
             InitializeComponent();
             DataContext = this;
-            textBoxSubjectName.Focus();
+            textBoxAge.Focus();
         }
 
         private void TextBoxSubjectNameKeyDown(object sender, KeyEventArgs e)
@@ -31,7 +31,7 @@ namespace WPFUserInterface
                 Regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű]{5,19}$");
 
                 if (!Regex.IsMatch(textBoxSubjectName.Text))
-                {                
+                {
                     MessageBox.Show("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     textBoxSubjectName.Clear();
@@ -49,7 +49,7 @@ namespace WPFUserInterface
                 {
                     Nickname = textBoxSubjectName.Text,
                     Age = Convert.ToInt32(textBoxAge.Text),
-                    Gender = radioButtonMale.IsChecked == true? Gender.Male : Gender.Female,
+                    Gender = radioButtonMale.IsChecked == true ? Gender.Male : Gender.Female,
                     SessionStartDate = DateTime.Now,
                     QuestionAnswers = new List<QuestionAnswer>()
                 };
