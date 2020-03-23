@@ -31,6 +31,7 @@ namespace WPFUserInterface
             else
             {
                 MessageBox.Show("Hibás jelszó", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                passwordBoxPassword.Clear();
             }
         }
 
