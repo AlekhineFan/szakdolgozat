@@ -1,6 +1,5 @@
 ﻿using BusinessLogic;
 using LiveCharts;
-using System.Collections.Generic;
 using LiveCharts.Wpf;
 using System.ComponentModel;
 using System.Linq;
@@ -24,14 +23,13 @@ namespace WPFUserInterface
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             chartDataProvider = new ChartDataProvider();
-            ChartData malechartData = chartDataProvider.GetMaleChartData();
-            ChartData femaleChartData = chartDataProvider.GetFemaleChartData();
+            ChartData chartData = chartDataProvider.GetChartData();
 
-            ScatterPoint[] malePoints = malechartData.MaleScatterPoints
+            ScatterPoint[] malePoints = chartData.MaleScatterPoints
                 .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
                 .ToArray();
 
-            ScatterPoint[] femalePoints = femaleChartData.FemaleScatterPoints
+            ScatterPoint[] femalePoints = chartData.FemaleScatterPoints
                 .Select(p => new ScatterPoint(p.Percentage, p.Age, p.Weight))
                 .ToArray();
 

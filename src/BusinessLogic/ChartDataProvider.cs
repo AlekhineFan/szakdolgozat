@@ -9,18 +9,26 @@ namespace BusinessLogic
     {
         private readonly SubjectManager subjectManager = new SubjectManager();
         private readonly TestEvaluator testEvaluator = new TestEvaluator();
-        public ChartData GetMaleChartData()
+
+        public ChartData GetChartData()
         {
-            Subject[] maleSubjects = subjectManager
+            Subject[] allSubjects = subjectManager
                 .GetAllSubjects()
-                .Where(x => x.Gender == Gender.Male)
                 .Include(x => x.QuestionAnswers)
                 .ThenInclude(x => x.Question)
                 .ToArray();
 
-            int[,] weights = new int[101, 100];
+            List<ScatterPoint> maleScatterPoints = GetScatterPoints(allSubjects, Gender.Male);
+            List<ScatterPoint> femaleScatterPoints = GetScatterPoints(allSubjects, Gender.Female);
 
-            foreach (Subject subject in maleSubjects)
+            return new ChartData(maleScatterPoints, femaleScatterPoints);
+        }
+
+        private List<ScatterPoint> GetScatterPoints(Subject[] allSubjects, Gender gender)
+        {
+            int[,] weights = new int[101, 101];
+
+            foreach (Subject subject in allSubjects.Where(x => x.Gender == gender))
             {
                 HemispherePercentage hemispherePercentage = testEvaluator.Evaluate(subject);
                 int rightPercentage = (int)hemispherePercentage.RightPercentage;
@@ -39,40 +47,7 @@ namespace BusinessLogic
                 }
             }
 
-            return new ChartData(maleScatterPoints, new List<ScatterPoint>());
+            return maleScatterPoints;
         }
-        public ChartData GetFemaleChartData()
-        {
-            Subject[] femaleSubjects = subjectManager
-                .GetAllSubjects()
-                .Where(x => x.Gender == Gender.Female)
-                .Include(x => x.QuestionAnswers)
-                .ThenInclude(x => x.Question)
-                .ToArray();
-
-            int[,] weights = new int[101, 100];
-
-            foreach (Subject subject in femaleSubjects)
-            {
-                HemispherePercentage hemispherePercentage = testEvaluator.Evaluate(subject);
-                int rightPercentage = (int)hemispherePercentage.RightPercentage;
-                int age = subject.Age;
-                weights[rightPercentage, age]++;
-            }
-
-            List<ScatterPoint> femaleScatterPoints = new List<ScatterPoint>();
-            for (int perc = 0; perc < weights.GetLength(0); perc++)
-            {
-                for (int age = 0; age < weights.GetLength(1); age++)
-                {
-                    int weight = weights[perc, age];
-                    if (weight > 0)
-                        femaleScatterPoints.Add(new ScatterPoint(perc, age, weight));
-                }
-            }
-
-            return new ChartData(femaleScatterPoints, new List<ScatterPoint>());
-        }
-
     }
 }
