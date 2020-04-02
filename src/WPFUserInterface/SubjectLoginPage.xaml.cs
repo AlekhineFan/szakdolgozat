@@ -38,7 +38,7 @@ namespace WPFUserInterface
                     return;
                 }
 
-                if (!(int.TryParse(textBoxAge.Text, out int age) && age < 101))
+                if (!(int.TryParse(textBoxAge.Text, out int age) && (age < 101 && age > 0)))
                 {
                     MessageBox.Show("Adjon megy egy érvényes életkort!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
                     textBoxAge.Clear();
