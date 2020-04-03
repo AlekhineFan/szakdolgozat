@@ -19,8 +19,7 @@ namespace BusinessLogic
             bool isAdult = subject.Age >= 18;
 
             return GetAllQuestions()
-                .Where(q => q.IsAdult == isAdult)
-                .Take(5);
+                .Where(q => q.IsAdult == isAdult);
         }
 
         public void AddQuestion(Question question) => questionRepo.Create(question);
