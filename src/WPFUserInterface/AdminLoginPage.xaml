@@ -6,9 +6,8 @@
       Loaded="Page_Loaded"
       mc:Ignorable="d" 
     Title="AdminLoginPage">
-    <Page.Resources>
-       
-    </Page.Resources>
+
+    
     <Border BorderBrush="White" BorderThickness="0,0,0,0">
         <Border.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -17,23 +16,25 @@
                 <GradientStop Color="DarkTurquoise" Offset="1.0" />
             </LinearGradientBrush>
         </Border.Background>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" MinWidth="90"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
+        <GroupBox Width="300" Height="185" BorderBrush="Purple" Header="Admin belépés">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MinWidth="90"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto" MinHeight="60"/>
-            </Grid.RowDefinitions>
-            <materialDesign:PackIcon Kind="AccountSecure" Margin="10,5,0,0"/>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Jelszó:" Margin="5" FontSize="14" HorizontalAlignment="Right" FontWeight="Bold"/>
-            <PasswordBox Grid.Column="1" Grid.Row="0" x:Name="passwordBoxPassword" Height="40" Width="180" Margin="5,0,10,0"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" MinHeight="60"/>
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="AccountSecure" Margin="10,20,0,4" VerticalAlignment="Bottom"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Jelszó:" Margin="0,0,10,3" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontWeight="Bold"/>
+                <PasswordBox Grid.Column="1" Grid.Row="0" x:Name="passwordBoxPassword" Height="40" Width="180" Margin="5,0,10,0"/>
 
-            <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="85" FontSize="14" Content="Belépés" Margin="50,10,-30,0" Click="LoginButton_Click" IsDefault="True"/>
-            <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="70" FontSize="14" Content="Vissza" Click="BackButton_Click" Margin="49,0,-30,0"/>
-        </Grid>
+                <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="85" FontSize="14" Content="Belépés" Margin="50,20,-30,0" Click="LoginButton_Click" IsDefault="True"/>
+                <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="70" FontSize="14" Content="Vissza" Click="BackButton_Click" Margin="49,-5,-30,0"/>
+            </Grid>
+        </GroupBox>
     </Border>
 </Page>

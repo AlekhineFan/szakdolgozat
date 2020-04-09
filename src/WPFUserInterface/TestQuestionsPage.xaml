@@ -5,41 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="200" d:DesignWidth="400"
+      d:DesignHeight="300" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:TestQuestionsPage, IsDesignTimeCreatable=True}"
       Title="Tesztkérdések" Background="AliceBlue"
+      FontFamily="Candara"
       Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="5"/>
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
             
-            <TextBlock Height="30"  Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="13" FontWeight="Bold"/>
-            
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding QuestionNumber.Value}" x:Name="textBlockQuestionNumber" Width="20" Padding="10"/>
-                <TextBlock Text=". kérdés:" HorizontalAlignment="Center" Margin="10,10,10,10"/>
-            </StackPanel>
-            
+            <TextBlock Height="30" Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="18" Foreground="Gray"/>
+
+            <TextBlock Text="{Binding QuestionNumber.Value}" x:Name="textBlockQuestionNumber" Width="20" FontSize="18" Foreground="Gray" FontFamily="Candara"/>
+
             <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Value.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto" IsReadOnly="True"/>
             
             <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <Button x:Name="buttonYes" Content="Jellemző" Height="50" Width="80" Margin="15,5,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
-                <Button x:Name="buttonNo" Content="Nem jellemző" Height="50" Width="80" Margin="10,5,0,5" HorizontalAlignment="Stretch" Click="buttonNo_Click"/>
+                <Button x:Name="buttonYes" Content="Jellemző" Height="40" Width="100" Margin="15,5,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
+                <Button x:Name="buttonNo" Content="Nem jellemző" Height="40" Width="130" Margin="10,5,0,5" HorizontalAlignment="Stretch" Click="buttonNo_Click"/>
             </StackPanel>
             
         </StackPanel>
