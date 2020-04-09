@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Agyfélteke teszt" Width="840" Height="700"
         WindowStartupLocation="CenterScreen"
+        
         Loaded="Window_Loaded">
 
     <Grid>

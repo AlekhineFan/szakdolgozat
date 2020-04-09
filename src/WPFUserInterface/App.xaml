@@ -21,7 +21,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Purple"  SecondaryColor="Cyan" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
