@@ -33,12 +33,13 @@ namespace WPFUserInterface
                 .GetAllSubjects()
                 .Include(subject => subject.QuestionAnswers)
                 .ThenInclude(answer => answer.Question)
+                .OrderBy(s => s.Nickname)
                 .ToList();
 
             listBoxSubjects.ItemsSource = subjects;
         }
 
-        private async void buttonPdf_Click(object sender, RoutedEventArgs e)
+        private async void ButtonPdf_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxSubjects.SelectedItem == null)
                 return;
@@ -71,15 +72,15 @@ namespace WPFUserInterface
             MessageBox.Show($"Mentés sikeres:\n{path}", "Mentés kész", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void buttonPreviewPdf_Click(object sender, RoutedEventArgs e)
+        private void ButtonPreviewPdf_Click(object sender, RoutedEventArgs e)
         {
             Subject selectedSubject = (Subject)listBoxSubjects.SelectedItem;
             if (selectedSubject == null)
                 return;
 
-            PreviewImageGenerator previewProvider = new PreviewImageGenerator();
-            previewProvider.HtmlProvider = new HtmlProvider(selectedSubject);
-            byte[] imageBytes = previewProvider.ConvertHtmlToImage();
+            PreviewImageGenerator previewGenerator = new PreviewImageGenerator();
+            previewGenerator.HtmlProvider = new HtmlProvider(selectedSubject);
+            byte[] imageBytes = previewGenerator.ConvertHtmlToImage();
 
             Window previewWindow = new Window();
             previewWindow.PreviewKeyDown += (sender, e) =>

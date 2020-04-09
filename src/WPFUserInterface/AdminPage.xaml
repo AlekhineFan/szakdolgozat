@@ -3,9 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="{StaticResource ResourceKey=braintransp}"
       Title="AdminPage">
 
     <Grid>
@@ -19,14 +21,37 @@
         </Grid.RowDefinitions>
 
         <DockPanel>
-            <Menu x:Name="menuMain" DockPanel.Dock="Top">
+            <Menu x:Name="menuMain" IsMainMenu="True" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
                 <MenuItem Header="Tesztkérdések">
-                    <MenuItem Header="Szerkesztés" Click="TestQuestions_Click"/>
-                    <MenuItem Header="Új kérdés" Click="NewQuestion_Click"/>
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="QuestionAnswer"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Szerkesztés" Click="TestQuestions_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Edit"></materialDesign:PackIcon>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Új kérdés" Click="NewQuestion_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Add"></materialDesign:PackIcon>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Teszteredmények exportálása PDF-be" Click="TestResultsToPdf_Click"/>
-                <MenuItem Header="Statisztika" Click="ChartPage_Click"/>
-                <MenuItem Header="Kijelentkezés" Click="Logout_Click"/>
+                <MenuItem Header="Teszteredmények exportálása PDF-be" Click="TestResultsToPdf_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Pdf"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Statisztika" Click="ChartPage_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ChartBubble"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Kijelentkezés" Click="Logout_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Logout"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
             </Menu>
         </DockPanel>
 

@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUserInterface"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Agyfélteke teszt" Height="600" Width="800"
-        Background="{StaticResource ResourceKey=nsys}"
+        Title="Agyfélteke teszt" Width="840" Height="700"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
+
     <Grid>
         <Frame x:Name="frameMain" NavigationUIVisibility="Hidden">
         </Frame>
     </Grid>
+
 </Window>
