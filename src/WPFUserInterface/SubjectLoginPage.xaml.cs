@@ -24,44 +24,54 @@ namespace WPFUserInterface
             textBoxAge.Focus();
         }
 
+        private void CreateSubject()
+        {
+            Regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű]{5,19}$");
+
+            if (!Regex.IsMatch(textBoxSubjectName.Text))
+            {
+                MessageBox.Show("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                textBoxSubjectName.Clear();
+                return;
+            }
+
+            if (!(int.TryParse(textBoxAge.Text, out int age) && (age < 101 && age > 0)))
+            {
+                MessageBox.Show("Adjon megy egy érvényes életkort!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                textBoxAge.Clear();
+                return;
+            }
+
+            Subject subject = new Subject()
+            {
+                Nickname = textBoxSubjectName.Text,
+                Age = Convert.ToInt32(textBoxAge.Text),
+                Gender = radioButtonMale.IsChecked == true ? Gender.Male : Gender.Female,
+                SessionStartDate = DateTime.Now,
+                QuestionAnswers = new List<QuestionAnswer>()
+            };
+
+            subjectRepository.Create(subject);
+            Finished?.Invoke(this, subject);
+        }
+
         private void TextBoxSubjectNameKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                Regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű]{5,19}$");
-
-                if (!Regex.IsMatch(textBoxSubjectName.Text))
-                {
-                    MessageBox.Show("A felhasználónév hossza 6 és 20 karakter közé kell, hogy essen! Csak kis- és nagybetűket, valamint számokat tartalmazhat, és nem kezdődhet számmal!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    textBoxSubjectName.Clear();
-                    return;
-                }
-
-                if (!(int.TryParse(textBoxAge.Text, out int age) && (age < 101 && age > 0)))
-                {
-                    MessageBox.Show("Adjon megy egy érvényes életkort!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    textBoxAge.Clear();
-                    return;
-                }
-
-                Subject subject = new Subject()
-                {
-                    Nickname = textBoxSubjectName.Text,
-                    Age = Convert.ToInt32(textBoxAge.Text),
-                    Gender = radioButtonMale.IsChecked == true ? Gender.Male : Gender.Female,
-                    SessionStartDate = DateTime.Now,
-                    QuestionAnswers = new List<QuestionAnswer>()
-                };
-
-                subjectRepository.Create(subject);
-                Finished?.Invoke(this, subject);
+                CreateSubject();
             }
+        }
+        private void StartTest_Click(object sender, RoutedEventArgs e)
+        {
+            CreateSubject();
         }
 
         private void Page_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             subjectRepository?.Dispose();
         }
+
     }
 }

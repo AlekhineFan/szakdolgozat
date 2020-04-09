@@ -7,41 +7,49 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       d:DataContext="{d:DesignInstance Type=local:SubjectLoginPage, IsDesignTimeCreatable=True}"
-      Title="SubjectLoginPage" FontSize="22" FontFamily="Consolas"
-      Background="{StaticResource ResourceKey=brainlight}"
+      Title="SubjectLoginPage" FontSize="14" FontFamily="Caldara"
       Unloaded="Page_Unloaded">
 
+    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="LightCyan" Offset="0.0" />
+                <GradientStop Color="LightBlue" Offset="0.5" />
+                <GradientStop Color="DarkTurquoise" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="170"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                <TextBlock Foreground="Gray" Text="Adja meg a nemét," FontSize="20" Grid.Column="1"/>
+                <TextBlock Foreground="Gray" Text="életkorát," FontSize="20" Grid.Column="1"/>
+                <TextBlock Foreground="Gray" Text="és egy álnevet!" FontSize="20" Grid.Column="1"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Nem" Margin="0,0,22,0"/>
+                <RadioButton x:Name="radioButtonMale" Content="Férfi" IsChecked="True"/>
+                <RadioButton x:Name="redioButtonFemale" Content="Nő" Margin="58,0,0,0"/>
+            </StackPanel>
+            <TextBlock Text="Életkor" Grid.Column="1" Grid.Row="3" Margin="0,12,0,-4"/>
+            <TextBox x:Name="textBoxAge" Grid.Column="1" Grid.Row="3" Height="30" Width="145" Margin="50,9,0,0" TabIndex="0"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="Név" Margin="0,12,0,-4"/>
+            <TextBox x:Name="textBoxSubjectName"  Grid.Column="1" Grid.Row="4" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown" TabIndex="1" Margin="47,9,0,0"/>
+            <Button x:Name="startTest" Content="Teszt indítása" Grid.Column="1" Grid.Row="5" Margin="0,15,0,0" Click="StartTest_Click" VerticalAlignment="Top" TabIndex="2"/>
 
 
-        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,5">
-            <TextBlock Text="Nem" FontWeight="Bold" Margin="0,0,22,0"/>
-            <RadioButton x:Name="radioButtonMale" Content="Férfi" IsChecked="True" FontWeight="Bold"/>
-            <RadioButton x:Name="redioButtonFemale" Content="Nő" Margin="58,0,0,0" FontWeight="Bold"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
-            <TextBlock Text="Életkor" FontWeight="Bold" Margin="0,8"/>
-            <TextBox x:Name="textBoxAge" Height="30" Width="140" Margin="10,0,0,0" TabIndex="0"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
-            <TextBlock Text="Név" FontWeight="Bold" Margin="0,5,58,0"/>
-            <TextBox x:Name="textBoxSubjectName" Text="{Binding SubjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" Width="140" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="TextBoxSubjectNameKeyDown" TabIndex="1"/>
-        </StackPanel>
-
-
-    </Grid>
+        </Grid>
+    </Border>
 </Page>
