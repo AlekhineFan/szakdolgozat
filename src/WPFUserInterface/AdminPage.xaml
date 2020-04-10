@@ -6,6 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
+      FontFamily="Candara"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 

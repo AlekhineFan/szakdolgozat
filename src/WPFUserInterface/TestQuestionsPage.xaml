@@ -6,37 +6,44 @@
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="500"
-      d:DataContext="{d:DesignInstance Type=local:TestQuestionsPage, IsDesignTimeCreatable=True}"
-      Title="Tesztkérdések" Background="AliceBlue"
+      Title="Tesztkérdések"
       FontFamily="Candara"
       Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="LightCyan" Offset="0.0" />
+                <GradientStop Color="LightBlue" Offset="0.5" />
+                <GradientStop Color="DarkTurquoise" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
-            
-            <TextBlock Height="30" Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="18" Foreground="Gray"/>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
 
-            <TextBlock Text="{Binding QuestionNumber.Value}" x:Name="textBlockQuestionNumber" Width="20" FontSize="18" Foreground="Gray" FontFamily="Candara"/>
+                <TextBlock Height="30" Text="A kérdésekre a megfelelő gomb megnyomásával válaszoljon!" HorizontalAlignment="Center" FontSize="18" Foreground="Gray"/>
 
-            <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Value.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" FontSize="20" Padding="2" TextWrapping="Wrap" Height="60" Width="auto" IsReadOnly="True"/>
-            
-            <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <Button x:Name="buttonYes" Content="Jellemző" Height="40" Width="100" Margin="15,5,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
-                <Button x:Name="buttonNo" Content="Nem jellemző" Height="40" Width="130" Margin="10,5,0,5" HorizontalAlignment="Stretch" Click="buttonNo_Click"/>
+                <TextBlock Text="{Binding QuestionNumber.Value}" x:Name="textBlockQuestionNumber" Width="20" FontSize="18" Foreground="Gray" FontFamily="Candara"/>
+
+                <TextBox x:Name="textBoxQuestion" Text="{Binding CurrentQuestion.Value.Text}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontSize="20" Padding="2" TextWrapping="Wrap" Height="auto" MinHeight="40" Width="auto" IsReadOnly="True"/>
+
+                <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                    <Button x:Name="buttonYes" Content="Jellemző" Height="40" Width="100" Margin="15,20,10,5" HorizontalAlignment="Stretch" Click="buttonYes_Click"/>
+                    <Button x:Name="buttonNo" Content="Nem jellemző" Height="40" Width="130" Margin="10,20,0,5" HorizontalAlignment="Stretch" Click="buttonNo_Click"/>
+                </StackPanel>
             </StackPanel>
-            
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </Border>
 </Page>

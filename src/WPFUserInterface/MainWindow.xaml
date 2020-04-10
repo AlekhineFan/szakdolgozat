@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPFUserInterface"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        FontFamily="Candara"
         Title="Agyfélteke teszt" Width="760" Height="600"
         WindowStartupLocation="CenterScreen"
         

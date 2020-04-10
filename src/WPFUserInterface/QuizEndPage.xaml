@@ -5,13 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
+      FontFamily="Candara"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizEndPage">
+    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="LightCyan" Offset="0.0" />
+                <GradientStop Color="LightBlue" Offset="0.5" />
+                <GradientStop Color="DarkTurquoise" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Label Content="Kitöltés vége"/>
-        <Button Content="OK" Click="OKButton_Click" Height="20" Width="80" Margin="0,0,0,-50" IsDefault="True"/>
-        </StackPanel>
-    </Grid>
+                <Label Content="Sikeres kitöltés! Az eredményről az adminisztrátor tájékoztatja." FontSize="20" FontWeight="DemiBold" Foreground="Gray"/>
+                <Image Source="/images/winTrans.png" MaxHeight="250"/>
+                <Button Content="OK" Click="OKButton_Click" Height="35" Width="80" Margin="0,10,0,-50" IsDefault="True"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Page>

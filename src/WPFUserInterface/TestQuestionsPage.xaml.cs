@@ -15,13 +15,6 @@ namespace WPFUserInterface
 
         public NotifyProperty<int> QuestionNumber { get; set; } = new NotifyProperty<int>();
 
-        //public TestQuestionsPage()
-        //{
-        //    // DESIGN TIME CTOR
-        //    quizMaster = new QuizMaster(new Subject());
-        //    NextQuestion();
-        //}
-
         public TestQuestionsPage(Subject subject)
         {
             InitializeComponent();

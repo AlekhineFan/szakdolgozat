@@ -22,6 +22,7 @@
     <None Remove="images\nervous_system.jpg" />
     <None Remove="images\nsys_cropped.jpg" />
     <None Remove="images\upperBrTr.png" />
+    <None Remove="images\winTrans.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,7 @@
     <Resource Include="images\nervous_system.jpg" />
     <Resource Include="images\nsys_cropped.jpg" />
     <Resource Include="images\upperBrTr.png" />
+    <Resource Include="images\winTrans.png" />
   </ItemGroup>
 
   <ItemGroup>
