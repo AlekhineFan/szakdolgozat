@@ -5,9 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d"
-      d:DesignHeight="200" d:DesignWidth="300"
+      FontFamily="Caldara"
+      Height="600" Width="760"
       Title="PleaseWaitPage">
-    <Grid Background="Beige">
-        <Label Content="Kérem várjon..." FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-    </Grid>
+
+    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="LightCyan" Offset="0.0" />
+                <GradientStop Color="LightBlue" Offset="0.5" />
+                <GradientStop Color="DarkTurquoise" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="0"
+                             IsIndeterminate="True" Width="60" Height="60" Margin="0,0,0,80"/>
+            <Label Content="Kérem várjon..." FontSize="20" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0"/>
+        </Grid>
+    </Border>
 </Page>

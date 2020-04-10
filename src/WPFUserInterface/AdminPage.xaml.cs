@@ -13,6 +13,7 @@ namespace WPFUserInterface
         {
             InitializeComponent();
             this.loadingScreenController = loadingScreenController;
+            menuMain.Width = this.Width;
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

@@ -10,65 +10,58 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-        <Border BorderBrush="White" BorderThickness="0,0,0,0">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="LightCyan" Offset="0.0" />
-                    <GradientStop Color="LightBlue" Offset="0.5" />
-                    <GradientStop Color="DarkTurquoise" Offset="1.0" />
-                </LinearGradientBrush>
-            </Border.Background>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width ="auto"/>
-                    <ColumnDefinition Width ="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Column="0" Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Menu x:Name="menuMain" HorizontalAlignment="Stretch">
-                        <MenuItem Grid.Column="0" Header="Tesztkérdések" HorizontalAlignment="Stretch">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="QuestionAnswer"></materialDesign:PackIcon>
-                            </MenuItem.Icon>
-                            <MenuItem Header="Szerkesztés" Click="TestQuestions_Click">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="Edit"></materialDesign:PackIcon>
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Header="Új kérdés" Click="NewQuestion_Click">
-                                <MenuItem.Icon>
-                                    <materialDesign:PackIcon Kind="Add"></materialDesign:PackIcon>
-                                </MenuItem.Icon>
-                            </MenuItem>
-                        </MenuItem>
-                        <MenuItem Grid.Column="0" Header="Teszteredmények exportálása PDF-be" HorizontalAlignment="Stretch" Click="TestResultsToPdf_Click">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="Pdf"></materialDesign:PackIcon>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Grid.Column="0" Header="Statisztika" HorizontalAlignment="Stretch" Click="ChartPage_Click">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="ChartBubble"></materialDesign:PackIcon>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Grid.Column="0" Header="Kijelentkezés" HorizontalAlignment="Stretch" Click="Logout_Click">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="Logout"></materialDesign:PackIcon>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </Menu>
-                </Grid>
-                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="frameMain" NavigationUIVisibility="Hidden">
-                </Frame>
-            </Grid>
-        </Border>
+    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="LightCyan" Offset="0.0" />
+                <GradientStop Color="LightBlue" Offset="0.5" />
+                <GradientStop Color="DarkTurquoise" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid x:Name="MainGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Menu x:Name="menuMain" HorizontalAlignment="Stretch"  Width="{Binding ElementName=MainGrid}">
+                <MenuItem Grid.Column="0" Header="Tesztkérdések" HorizontalAlignment="Stretch">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="QuestionAnswer"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Szerkesztés" Click="TestQuestions_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Edit"></materialDesign:PackIcon>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Új kérdés" Click="NewQuestion_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Add"></materialDesign:PackIcon>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Grid.Column="0" Header="Teszteredmények" HorizontalAlignment="Stretch" Click="TestResultsToPdf_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Pdf"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Grid.Column="0" Header="Statisztika" HorizontalAlignment="Stretch" Click="ChartPage_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ChartBubble"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Grid.Column="0" Header="Kijelentkezés" HorizontalAlignment="Stretch" Click="Logout_Click">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Logout"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+            <Frame Grid.Row="1" Grid.Column="0" x:Name="frameMain" NavigationUIVisibility="Hidden">
+            </Frame>
+        </Grid>
+        
+    </Border>
 </Page>
