@@ -5,63 +5,67 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserInterface"
       mc:Ignorable="d" 
-      d:DesignHeight="465" d:DesignWidth="400"
-      Title="EditQuestions" Background="LightBlue" FontSize="12">
+      FontFamily="Candara"
+      Height="600" Width="760"
+      Title="EditQuestions" FontSize="14">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto" MinWidth="230" x:Name="firstColumn"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="2" Grid.Row="2" Text="Kérdés:" Margin="10,10,2,2"/>
-        <TextBox x:Name="textBoxQuestion" Grid.Column="3" Grid.Row="2" TabIndex="0" Background="White" Height="75" Width="300" Margin="2,10,2,2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="textBoxQuestion" BorderBrush="Purple" BorderThickness="1" Grid.Column="1" Grid.Row="2" TabIndex="0" Background="White" Height="120" Width="360" Margin="40,40,2,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 
-        <Label Grid.Column="2" Grid.Row="3"  Grid.ColumnSpan="4" Margin="10,2,2,2" Content="Igen válasz esetén a félteke:"/>
-        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Margin="0,6,20,21" Orientation="Horizontal" Grid.Row="3">
-            <RadioButton x:Name="radioRight" GroupName="Felteke" Content="Jobb" IsChecked="True" Margin="0,0,30,0"/>
-            <RadioButton x:Name="radioLeft" GroupName="Felteke" Content="Bal" Margin="0,0,30,0" />
+        <Label Content="Kérdés szövege" Grid.Column="0" Grid.Row="2" Margin="0,36,0,0" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Igen válasz esetén a félteke"/>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left"  Orientation="Horizontal" Grid.Row="3" Margin="40,0,0,0">
+            <RadioButton x:Name="radioRight" GroupName="Felteke" Content="Jobb" IsChecked="True" Margin="0,0,32,0"/>
+            <RadioButton x:Name="radioLeft" GroupName="Felteke" Content="Bal" />
         </StackPanel>
 
-        <TextBlock Grid.Column="2" Grid.Row="4"  Grid.ColumnSpan="2" Margin="10,2,2,2" Text="A célcsoport életkor szerint:"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="A célcsoport életkor szerint" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" Margin="4,7,0,0"/>
 
-        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Margin="0,4,0,0" Orientation="Horizontal" Grid.Row="4">
-            <RadioButton x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="0,0,30,0"/>
-            <RadioButton x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek" Margin="0,0,30,0" />
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,0,0,0" Orientation="Horizontal" Height="30" Grid.Row="4">
+            <RadioButton x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="0,0,20,0"/>
+            <RadioButton x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek"/>
         </StackPanel>
 
-        <TextBlock Grid.Column="2" Grid.Row="5" Text="Kérdések:" Margin="10,38,3,0"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="Kérdések" Margin="10,10,0,0" Height="30" Width="56" VerticalAlignment="Top" HorizontalAlignment="Right"/>
 
-        <StackPanel Grid.Column="3" Grid.Row="5" Orientation="Vertical">
-            <Button x:Name="buttonSaveQuestion" Content="Mentés" Grid.Column="1" Grid.Row="3" Width="80" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
-            <ListBox ItemsSource="{Binding QuestionsView}" x:Name="listBoxQuestions" Width="auto" Height="230" Margin="2,4,2.4,4" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
+        <Image Source="/images/braincuttransp.png" MaxHeight="250" MaxWidth="250" Grid.Column="0" Grid.Row="5"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical" Margin="0,10,0,0">
+            <ListBox ItemsSource="{Binding QuestionsView}" x:Name="listBoxQuestions" Width="auto" Height="180" BorderBrush="Purple" BorderThickness="1" Margin="40,0,2,2" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Path=Text}" Height="20" Padding="0"/>
+                        <Label Content="{Binding Text}" Height="20" Padding="0"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Szűrés:"/>
+            <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                <TextBlock Text="Szűrés:" Margin="0,5,0,5"/>
                 <CheckBox x:Name="checkBoxFilterRight" Content="jobb" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
                 <CheckBox x:Name="checkBoxFilterLeft" Content="bal" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
                 <CheckBox x:Name="checkBoxFilterAdult" Content="felnőtt" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
                 <CheckBox x:Name="checkBoxFilterChild" Content="gyerek" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
             </StackPanel>
-            <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" Width="125" Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Margin="40,10,0,0" HorizontalAlignment="Center">
+                <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" MinWidth="200" 
+                    Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center"/>
+                <Button x:Name="buttonSaveQuestion" Content="Mentés" MinWidth="160" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

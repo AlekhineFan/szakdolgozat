@@ -15,6 +15,7 @@ namespace WPFUserInterface
         public NewQuestionPage()
         {
             InitializeComponent();
+            textBoxQuestion.Focus();
         }
 
         private void BackToAdminpage_Click(object sender, RoutedEventArgs e)
