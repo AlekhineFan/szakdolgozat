@@ -27,6 +27,7 @@ namespace WPFUserInterface
         {
             InitializeComponent();
             DataContext = this;
+            textBoxQuestion.Focus();
         }
 
         private void listBoxQuestions_Loaded(object sender, System.Windows.RoutedEventArgs e)

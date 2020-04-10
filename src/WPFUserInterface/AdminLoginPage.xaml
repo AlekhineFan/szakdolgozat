@@ -16,7 +16,7 @@
                 <GradientStop Color="DarkTurquoise" Offset="1.0" />
             </LinearGradientBrush>
         </Border.Background>
-        <GroupBox Width="300" Height="185" BorderBrush="Purple" Header="Admin belépés">
+        <GroupBox Width="300" Height="200" BorderBrush="Purple" Header="Admin belépés">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="90"/>
@@ -33,7 +33,7 @@
                 <PasswordBox Grid.Column="1" Grid.Row="0" x:Name="passwordBoxPassword" Height="40" Width="180" Margin="5,0,10,0"/>
 
                 <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="85" FontSize="14" Content="Belépés" Margin="50,20,-30,0" Click="LoginButton_Click" IsDefault="True"/>
-                <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="70" FontSize="14" Content="Vissza" Click="BackButton_Click" Margin="49,-5,-30,0"/>
+                <Button Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" Width="70" FontSize="14" Content="Vissza" Click="BackButton_Click" Margin="0,0,10,0"/>
             </Grid>
         </GroupBox>
     </Border>

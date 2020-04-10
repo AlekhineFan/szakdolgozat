@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using DataAccess.Model;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,7 +26,17 @@ namespace WPFUserInterface
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Validate
+
+            Regex regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű!?.()]{1,300}$");
+
+            if (!regex.IsMatch(textBoxQuestion.Text))
+            {
+                MessageBox.Show("A kérdés szövege nem lehet üres, és nem tartalmazhat speciális karaktert!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                textBoxQuestion.Clear();
+                return;
+            }
+
             string questionText = textBoxQuestion.Text;
             Hemisphere hemisphere = radioLeft.IsChecked.Value ? Hemisphere.Left : Hemisphere.Right;
             bool isAdult = radioAdult.IsChecked.Value;

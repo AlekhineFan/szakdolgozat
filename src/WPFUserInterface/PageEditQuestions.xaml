@@ -25,24 +25,24 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="textBoxQuestion" BorderBrush="Purple" BorderThickness="1" Grid.Column="1" Grid.Row="2" TabIndex="0" Background="White" Height="120" Width="360" Margin="40,40,2,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="textBoxQuestion" BorderBrush="Purple" BorderThickness="1" Grid.Column="1" Grid.Row="2" TabIndex="0" Background="White" Height="120" Width="360" Margin="40,20,2,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 
-        <Label Content="Kérdés szövege" Grid.Column="0" Grid.Row="2" Margin="0,36,0,0" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-        <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Igen válasz esetén a félteke"/>
+        <Label Content="Kérdés szövege" Grid.Column="0" Grid.Row="2" Margin="0,16,0,0" FontWeight="DemiBold" Foreground="Gray" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Grid.Column="0" Grid.Row="3" FontWeight="DemiBold" Foreground="Gray" HorizontalAlignment="Left" Content="Igen válasz esetén a félteke" Height="25" Margin="78,0,0,0" VerticalAlignment="Top"/>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Left"  Orientation="Horizontal" Grid.Row="3" Margin="40,0,0,0">
-            <RadioButton x:Name="radioRight" GroupName="Felteke" Content="Jobb" IsChecked="True" Margin="0,0,32,0"/>
-            <RadioButton x:Name="radioLeft" GroupName="Felteke" Content="Bal" />
+            <RadioButton Foreground="Gray" x:Name="radioRight" GroupName="Felteke" Content="Jobb" IsChecked="True" Margin="0,0,32,0"/>
+            <RadioButton Foreground="Gray" x:Name="radioLeft" GroupName="Felteke" Content="Bal" />
         </StackPanel>
 
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="A célcsoport életkor szerint" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" Margin="4,7,0,0"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" FontWeight="DemiBold" Foreground="Gray" Text="A célcsoport életkor szerint" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top" Margin="4,7,0,0"/>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,0,0,0" Orientation="Horizontal" Height="30" Grid.Row="4">
-            <RadioButton x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="0,0,20,0"/>
-            <RadioButton x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek"/>
+            <RadioButton Foreground="Gray" x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="0,0,20,0"/>
+            <RadioButton Foreground="Gray" x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek"/>
         </StackPanel>
 
-        <TextBlock Grid.Column="0" Grid.Row="5" Text="Kérdések" Margin="10,10,0,0" Height="30" Width="56" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="Kérdések" Margin="10,10,0,0" FontWeight="DemiBold" Foreground="Gray" Height="30" Width="56" VerticalAlignment="Top" HorizontalAlignment="Right"/>
 
         <Image Source="/images/braincuttransp.png" MaxHeight="250" MaxWidth="250" Grid.Column="0" Grid.Row="5"/>
 
@@ -55,11 +55,11 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
-                <TextBlock Text="Szűrés:" Margin="0,5,0,5"/>
-                <CheckBox x:Name="checkBoxFilterRight" Content="jobb" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterLeft" Content="bal" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterAdult" Content="felnőtt" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
-                <CheckBox x:Name="checkBoxFilterChild" Content="gyerek" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <TextBlock Text="Szűrés:" FontWeight="DemiBold" Foreground="Gray" Margin="0,5,0,5"/>
+                <CheckBox Foreground="Gray" x:Name="checkBoxFilterRight" Content="jobb" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox Foreground="Gray" x:Name="checkBoxFilterLeft" Content="bal" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox Foreground="Gray" x:Name="checkBoxFilterAdult" Content="felnőtt" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
+                <CheckBox Foreground="Gray" x:Name="checkBoxFilterChild" Content="gyerek" IsChecked="True" FontWeight="DemiBold" Margin="8,2,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="40,10,0,0" HorizontalAlignment="Center">
                 <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" MinWidth="200" 
