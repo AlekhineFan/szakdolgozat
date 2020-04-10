@@ -24,6 +24,7 @@ namespace WPFUserInterface
         {
             InitializeComponent();
             this.loadingScreen = loadingScreen;
+            SearchBox.Focus();
         }
 
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
@@ -99,6 +100,20 @@ namespace WPFUserInterface
             previewWindow.Height = bitmapSource.Height;
             previewWindow.Width = bitmapSource.Width;
             previewWindow.ShowDialog();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchFor = SearchBox.Text.ToLower();
+            var subjects = subjectManager
+               .GetAllSubjects()
+               .Include(subject => subject.QuestionAnswers)
+               .ThenInclude(answer => answer.Question)
+               .OrderBy(s => s.Nickname)
+               .Where(s => s.Nickname.ToLower().StartsWith(searchFor))
+               .ToList();
+
+            listBoxSubjects.ItemsSource = subjects;
         }
     }
 }

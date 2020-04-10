@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFUserInterface"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Agyfélteke teszt" Width="840" Height="700"
+        Title="Agyfélteke teszt" Width="760" Height="600"
         WindowStartupLocation="CenterScreen"
         
         Loaded="Window_Loaded">
