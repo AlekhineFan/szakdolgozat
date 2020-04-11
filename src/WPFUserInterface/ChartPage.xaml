@@ -10,7 +10,7 @@
     <Grid Margin="10">
         <lvc:CartesianChart x:Name="chart" Series="{Binding SeriesCollection}" FontSize="16">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Agyféltek" MinValue="0" MaxValue="100" FontSize="16" Foreground="Black">
+                <lvc:Axis Title="Agyfélteke" MinValue="0" MaxValue="100" FontSize="16" Foreground="Black">
                     <lvc:Axis.Separator>
                         <lvc:Separator Step="10" StrokeThickness="0.5" Stroke="DarkGray"/>
                     </lvc:Axis.Separator>
