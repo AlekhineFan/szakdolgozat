@@ -27,9 +27,9 @@ namespace WPFUserInterface
         private void Save_Click(object sender, RoutedEventArgs e)
         {
 
-            Regex regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű!?.()]{1,300}$");
+            QuestionTextValidator validator = new QuestionTextValidator();
 
-            if (!regex.IsMatch(textBoxQuestion.Text))
+            if (!validator.Validate(textBoxQuestion.Text))
             {
                 MessageBox.Show("A kérdés szövege nem lehet üres, és nem tartalmazhat speciális karaktert!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -53,7 +53,7 @@ namespace WPFUserInterface
                 questionManager.AddQuestion(question);
             }
 
-            MessageBox.Show("Sikeres mentés!");
+            MessageBox.Show("Sikeres mentés!", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

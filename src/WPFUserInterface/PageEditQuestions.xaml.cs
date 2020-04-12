@@ -75,11 +75,17 @@ namespace WPFUserInterface
 
         private void buttonSaveQuestion_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            QuestionTextValidator validator = new QuestionTextValidator();
             Question question = SelectedQuestion;
+
             if (question == null)
             {
                 MessageBox.Show("Válasszon ki egy kérdést!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
+            }
+            else if (!validator.Validate(textBoxQuestion.Text))
+            {
+                MessageBox.Show("A kérdés szövege nem lehet üres, és nem tartalmazhat speciális karaktert!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             question.Text = textBoxQuestion.Text;
@@ -87,6 +93,8 @@ namespace WPFUserInterface
             question.Hemisphere = radioLeft.IsChecked.Value ? Hemisphere.Left : Hemisphere.Right;
 
             questionManager.SaveChanges();
+
+            MessageBox.Show("Sikeres mentés!", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void listBoxQuestions_KeyDown(object sender, KeyEventArgs e)
