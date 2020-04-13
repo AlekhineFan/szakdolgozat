@@ -63,7 +63,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="40,10,0,0" HorizontalAlignment="Center">
                 <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" MinWidth="200" 
-                    Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center"/>
+                    Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center" Click="ButtonDeleteQuestion_Click"/>
                 <Button x:Name="buttonSaveQuestion" Content="Mentés" MinWidth="160" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
             </StackPanel>
         </StackPanel>

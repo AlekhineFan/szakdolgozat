@@ -29,8 +29,7 @@ namespace WPFUserInterface
             DataContext = this;
             textBoxQuestion.Focus();
         }
-
-        private void listBoxQuestions_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void PopulateListBoxQuestion()
         {
             questionManager = new QuestionManager();
             Questions = questionManager.GetAllQuestions().ToArray();
@@ -42,6 +41,11 @@ namespace WPFUserInterface
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QuestionsView)));
 
             SubscribeCheckBoxEvents();
+        }
+
+        private void listBoxQuestions_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            PopulateListBoxQuestion();
         }
 
         private void SubscribeCheckBoxEvents()
@@ -96,15 +100,26 @@ namespace WPFUserInterface
 
             MessageBox.Show("Sikeres mentés!", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+        private void DeleteProcedure()
+        {
+            MessageBoxResult result = MessageBox.Show("Biztosan törli a kijelölt kérdést?", "Törlés", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
+            if (result != MessageBoxResult.OK)
+                return;
+            questionManager.Delete(SelectedQuestion);
+            PopulateListBoxQuestion();
+        }
         private void listBoxQuestions_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete && SelectedQuestion != null)
             {
-                questionManager.Delete(SelectedQuestion);
+                DeleteProcedure();
             }
         }
-
+        private void ButtonDeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteProcedure();
+        }
         private void FilterChanged(object sender, RoutedEventArgs e)
         {
             bool rightHemisphere = checkBoxFilterRight.IsChecked.Value;
@@ -126,6 +141,6 @@ namespace WPFUserInterface
 
                 return false;
             };
-        }
+        }     
     }
 }
