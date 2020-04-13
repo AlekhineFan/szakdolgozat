@@ -13,13 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\brain.jpg" />
-    <None Remove="images\brainColored.jpg" />
     <None Remove="images\brainColorTr.png" />
     <None Remove="images\braincuttransp.png" />
-    <None Remove="images\brain_light.jpg" />
     <None Remove="images\lowerBrTr.png" />
-    <None Remove="images\nervous_system.jpg" />
     <None Remove="images\nsys_cropped.jpg" />
     <None Remove="images\upperBrTr.png" />
     <None Remove="images\winTrans.png" />
@@ -36,13 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\brain.jpg" />
-    <Resource Include="images\brainColored.jpg" />
     <Resource Include="images\brainColorTr.png" />
     <Resource Include="images\braincuttransp.png" />
-    <Resource Include="images\brain_light.jpg" />
     <Resource Include="images\lowerBrTr.png" />
-    <Resource Include="images\nervous_system.jpg" />
     <Resource Include="images\nsys_cropped.jpg" />
     <Resource Include="images\upperBrTr.png" />
     <Resource Include="images\winTrans.png" />
