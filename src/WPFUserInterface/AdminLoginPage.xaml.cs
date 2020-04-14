@@ -22,16 +22,15 @@ namespace WPFUserInterface
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string password = passwordBoxPassword.Password;
-            bool loginResult = manager.Login(password);
 
-            if (!loginResult && manager.IsAdminExist() == false)
+            if (manager.IsAdminExist() == false)
             {
                 manager.CreateAdmin(passwordBoxPassword.Password);
                 MessageBox.Show("Új adminisztrátor sikeresen regisztrálva!", "Admin regisztráció", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Finished?.Invoke(this, OkCancelResult.Ok);
             }
-            if (loginResult)
+            if (manager.Login(password))
             {
                 Finished?.Invoke(this, OkCancelResult.Ok);
             }
