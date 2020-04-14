@@ -24,6 +24,13 @@ namespace WPFUserInterface
             string password = passwordBoxPassword.Password;
             bool loginResult = manager.Login(password);
 
+            if (!loginResult && manager.IsAdminExist() == false)
+            {
+                manager.CreateAdmin(passwordBoxPassword.Password);
+                MessageBox.Show("Új adminisztrátor sikeresen regisztrálva!", "Admin regisztráció", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                Finished?.Invoke(this, OkCancelResult.Ok);
+            }
             if (loginResult)
             {
                 Finished?.Invoke(this, OkCancelResult.Ok);
