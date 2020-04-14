@@ -17,7 +17,7 @@ namespace BusinessLogic
         private string BuildHeader()
         {
             TestEvaluator evaluator = new TestEvaluator();
-            string genderInHungarian = (Subject.Gender.ToString() == "Férfi")? "Férfi" : "Nő";
+            string genderInHungarian = (Subject.Gender.ToString() == "Male")? "Férfi" : "Nő";
             string header = $"<head><meta charset='UTF8'> " +
                 "<style>table{font-family: arial, sans-serif;border-collapse: collapse;width:100%;}td,th{border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even){background-color: #dddddd;}</style></head>" +
                 "<h1 style=text-align:center;background-color:lightblue;font-size:xx-large;>Teszteredmények</h1>" +
