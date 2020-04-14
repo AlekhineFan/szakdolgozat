@@ -45,10 +45,5 @@ namespace WPFUserInterface
         {
             Finished?.Invoke(this, OkCancelResult.Cancel);
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            //LoginButton_Click(null, null);
-        }
     }
 }
