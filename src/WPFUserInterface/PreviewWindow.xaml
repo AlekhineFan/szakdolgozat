@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFUserInterface"
         mc:Ignorable="d"
-        Title="PreviewWindow" Height="450" Width="800">
+        Title="PreviewWindow" Height="600" Width="760">
     <Grid>
-        
+        <ScrollViewer x:Name="previewScroll">
+
+        </ScrollViewer>
     </Grid>
 </Window>

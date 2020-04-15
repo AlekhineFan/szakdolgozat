@@ -84,23 +84,24 @@ namespace WPFUserInterface
             previewGenerator.HtmlProvider = new HtmlProvider(selectedSubject);
             byte[] imageBytes = previewGenerator.ConvertHtmlToImage();
 
-            Window previewWindow = new Window();
-            previewWindow.PreviewKeyDown += (sender, e) =>
+            PreviewWindow window = new PreviewWindow();
+
+            window.PreviewKeyDown += (sender, e) =>
             {
                 if (e.Key == Key.Escape)
-                    previewWindow.Close();
+                    window.Close();
             };
-            previewWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             BitmapSource bitmapSource = (BitmapSource)new ImageSourceConverter().ConvertFrom(imageBytes);
-            previewWindow.Content = new Image
+            window.previewScroll.Content = new Image
             {
                 Source = bitmapSource
             };
 
-            previewWindow.Height = bitmapSource.Height;
-            previewWindow.Width = bitmapSource.Width;
-            previewWindow.ShowDialog();
+            window.Height = bitmapSource.Height;
+            window.Width = bitmapSource.Width;
+            window.ShowDialog();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
