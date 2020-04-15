@@ -14,6 +14,7 @@ namespace WPFUserInterface
         public WelcomePage()
         {
             InitializeComponent();
+            buttonBeginTest.Focus();
         }
 
         private void AdminLoginButton_Click(object sender, RoutedEventArgs e)

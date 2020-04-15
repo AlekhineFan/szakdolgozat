@@ -32,8 +32,8 @@
             <Image Source="/images/upperBrTr.png" Grid.Column="1" Margin="15"/>
             <Image Source="/images/lowerBrTr.png" Grid.Column="1" Grid.Row="2" Margin="15"/>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Kitöltöm a tesztet" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="40" Width="140" Margin="0,0,5,0" Click="BeginTestButton_Click"/>
-                <Button Content="Admin belépés" Grid.Column="1" Grid.Row="1" Height="40" Width="140" Margin="5,0,0,0" HorizontalAlignment="Center" Click="AdminLoginButton_Click"/>
+                <Button x:Name="buttonBeginTest" Content="Kitöltöm a tesztet" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="40" Width="140" Margin="0,0,5,0" Click="BeginTestButton_Click" TabIndex="0"/>
+                <Button x:Name="buttonAdminLogin" Content="Admin belépés" Grid.Column="1" Grid.Row="1" Height="40" Width="140" Margin="5,0,0,0" HorizontalAlignment="Center" Click="AdminLoginButton_Click" TabIndex="1"/>
           
             </StackPanel>
         </Grid>

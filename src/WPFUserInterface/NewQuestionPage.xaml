@@ -18,22 +18,22 @@
 
            
             <StackPanel Margin="0,0,85,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Label FontWeight="DemiBold" Foreground="Gray" Margin="0,10,13,8" FontSize="14" Content="Igen válasz esetén a félteke:"/>
-                <RadioButton Foreground="Gray" x:Name="radioLeft" GroupName="Felteke" Content="Bal" Margin="0,0,-4,0" IsChecked="True"/>
+                <Label FontWeight="DemiBold" Foreground="Gray" Margin="0,10,13,8" FontSize="14" Content="Igen válasz esetén a félteke:" IsTabStop="False"/>
+                <RadioButton Foreground="Gray" x:Name="radioLeft" GroupName="Felteke" Content="Bal" Margin="0,0,-4,0" IsChecked="True" IsTabStop="False"/>
                 <RadioButton Foreground="Gray" x:Name="radioRight" GroupName="Felteke" Content="Jobb" Margin="59,0,-21,0"/>
             </StackPanel>
 
            
 
             <StackPanel Margin="10,10,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock FontWeight="DemiBold" Foreground="Gray" Margin="10" Text="A célcsoport életkor szerint:"/>
-                <RadioButton Foreground="Gray" x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="8,0,30,0"/>
+                <Label FontWeight="DemiBold" Foreground="Gray" Margin="10" Content="A célcsoport életkor szerint:" IsTabStop="False"/>
+                <RadioButton Foreground="Gray" x:Name="radioAdult" GroupName="Korcsoport" Content="Felnőtt" IsChecked="True" Margin="8,0,30,0" IsTabStop="False"/>
                 <RadioButton Foreground="Gray" x:Name="radioChild" GroupName="Korcsoport" Content="Gyermek" Margin="0,0,30,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="50,30,0,0">
                 <Button Content="Mentés" Width="120" Height="40" Click="Save_Click" Margin="120,0,0,0" TabIndex="1"/>
                 <Button Content="Vissza" Width="120" Height="40" Margin="10,0,0,0" TabIndex="2" Click="BackToAdminpage_Click"/>
-                <Button x:Name="ButtonClear" Content="Szöveg törlése" Height="40" MinWidth="100" Margin="10,0,0,0" Click="ButtonClear_Click"/>
+                <Button x:Name="ButtonClear" Content="Szöveg törlése" Height="40" MinWidth="100" Margin="10,0,0,0" Click="ButtonClear_Click" TabIndex="3"/>
             </StackPanel>
             <Image Source="/images/braincuttransp.png" MaxHeight="230" MaxWidth="230" HorizontalAlignment="Left" Margin="0,-160,0,0"/>
         </StackPanel>
