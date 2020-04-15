@@ -26,7 +26,7 @@ namespace WPFUserInterface
 
         private void CreateSubject()
         {
-            Regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű]{5,19}$");
+            Regex = new Regex(@"^[a-zA-Z, áéíóöőúüű][a-zA-Z0-9 áéíóöőúüű]{5,19}$");
 
             if (!Regex.IsMatch(textBoxSubjectName.Text))
             {

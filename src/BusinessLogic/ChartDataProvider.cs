@@ -31,9 +31,9 @@ namespace BusinessLogic
             foreach (Subject subject in allSubjects.Where(x => x.Gender == gender))
             {
                 HemispherePercentage hemispherePercentage = testEvaluator.Evaluate(subject);
-                int rightPercentage = (int)hemispherePercentage.LeftPercentage;
+                int leftPercentage = (int)hemispherePercentage.LeftPercentage;
                 int age = subject.Age;
-                weights[rightPercentage, age]++;
+                weights[leftPercentage, age]++;
             }
 
             List<ScatterPoint> maleScatterPoints = new List<ScatterPoint>();

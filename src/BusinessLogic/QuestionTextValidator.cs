@@ -10,7 +10,7 @@ namespace BusinessLogic
         public bool Validate (string questionText)
         {
             bool isValid = false;
-            Regex regex = new Regex(@"^[a-zA-Z, áéíóőúű][a-zA-Z0-9 áéíóőúű!?.()]{1,300}$");
+            Regex regex = new Regex(@"^[a-zA-Z, áéíóöőúüű][a-zA-Z0-9 áéíóöőúüű!?.()]{1,300}$");
             if (regex.IsMatch(questionText))
             {
                 isValid = true;
