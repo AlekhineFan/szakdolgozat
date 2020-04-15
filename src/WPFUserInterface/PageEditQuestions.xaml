@@ -25,7 +25,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="textBoxQuestion" BorderBrush="Purple" BorderThickness="1" Grid.Column="1" Grid.Row="2" TabIndex="0" Background="White" Height="120" Width="360" Margin="40,20,2,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="textBoxQuestion" BorderBrush="Purple" BorderThickness="1" Grid.Column="1" Grid.Row="2" TabIndex="0" Background="White" Height="120" MaxWidth="360" Margin="40,20,10,10" TextWrapping="Wrap" AcceptsReturn="True" Padding="2" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Auto"/>
 
         <Label Content="Kérdés szövege" Grid.Column="0" Grid.Row="2" Margin="0,16,0,0" FontWeight="DemiBold" Foreground="Gray" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right"/>
         <Label Grid.Column="0" Grid.Row="3" FontWeight="DemiBold" Foreground="Gray" HorizontalAlignment="Left" Content="Igen válasz esetén a félteke" Height="25" Margin="78,0,0,0" VerticalAlignment="Top"/>
@@ -47,10 +47,11 @@
         <Image Source="/images/braincuttransp.png" MaxHeight="250" MaxWidth="250" Grid.Column="0" Grid.Row="5"/>
 
         <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical" Margin="0,10,0,0">
-            <ListBox ItemsSource="{Binding QuestionsView}" x:Name="listBoxQuestions" Width="auto" Height="180" BorderBrush="Purple" BorderThickness="1" Margin="40,0,2,2" Loaded="listBoxQuestions_Loaded" SelectionChanged="listBoxQuestions_SelectionChanged" KeyDown="listBoxQuestions_KeyDown">
+            <ListBox ItemsSource="{Binding QuestionsView}" x:Name="listBoxQuestions" Width="360" Height="180" 
+           BorderBrush="Purple" BorderThickness="1" Margin="40,0,10,2" Loaded="ListBoxQuestions_Loaded" SelectionChanged="ListBoxQuestions_SelectionChanged" KeyDown="ListBoxQuestions_KeyDown">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Text}" Height="20" Padding="0"/>
+                        <TextBlock TextWrapping="WrapWithOverflow"  Text="{Binding Text}" Height="20" Padding="0"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -64,7 +65,7 @@
             <StackPanel Orientation="Horizontal" Margin="40,10,0,0" HorizontalAlignment="Center">
                 <Button x:Name="buttonDeleteQuestion" Content="Kijelölt törlése" Grid.Column="1" Grid.Row="3" MinWidth="200" 
                     Height="30"  Margin="2,4,2,2" HorizontalAlignment="Center" Click="ButtonDeleteQuestion_Click"/>
-                <Button x:Name="buttonSaveQuestion" Content="Mentés" MinWidth="160" Height="30"  Margin="2,4,2,2" Click="buttonSaveQuestion_Click"/>
+                <Button x:Name="buttonSaveQuestion" Content="Mentés" MinWidth="160" Height="30"  Margin="2,4,2,2" Click="ButtonSaveQuestion_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

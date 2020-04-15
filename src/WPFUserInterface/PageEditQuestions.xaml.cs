@@ -43,7 +43,7 @@ namespace WPFUserInterface
             SubscribeCheckBoxEvents();
         }
 
-        private void listBoxQuestions_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void ListBoxQuestions_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             PopulateListBoxQuestion();
         }
@@ -63,7 +63,7 @@ namespace WPFUserInterface
             checkBoxFilterChild.Unchecked += FilterChanged;
         }
 
-        private void listBoxQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBoxQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Question question = SelectedQuestion;
 
@@ -77,7 +77,7 @@ namespace WPFUserInterface
             radioChild.IsChecked = !radioAdult.IsChecked;
         }
 
-        private void buttonSaveQuestion_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonSaveQuestion_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             QuestionTextValidator validator = new QuestionTextValidator();
             Question question = SelectedQuestion;
@@ -109,7 +109,7 @@ namespace WPFUserInterface
             questionManager.Delete(SelectedQuestion);
             PopulateListBoxQuestion();
         }
-        private void listBoxQuestions_KeyDown(object sender, KeyEventArgs e)
+        private void ListBoxQuestions_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete && SelectedQuestion != null)
             {
