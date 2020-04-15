@@ -92,7 +92,7 @@ namespace WPFUserInterface
                 MessageBox.Show("A kérdés szövege nem lehet üres, és nem tartalmazhat speciális karaktert!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            question.Text = textBoxQuestion.Text;
+            question.Text = textBoxQuestion.Text.Trim();
             question.IsAdult = radioAdult.IsChecked.Value;
             question.Hemisphere = radioLeft.IsChecked.Value ? Hemisphere.Left : Hemisphere.Right;
 
@@ -120,6 +120,10 @@ namespace WPFUserInterface
         {
             DeleteProcedure();
         }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxQuestion.Clear();
+        }
         private void FilterChanged(object sender, RoutedEventArgs e)
         {
             bool rightHemisphere = checkBoxFilterRight.IsChecked.Value;
@@ -141,6 +145,6 @@ namespace WPFUserInterface
 
                 return false;
             };
-        }     
+        }      
     }
 }

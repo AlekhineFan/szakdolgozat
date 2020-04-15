@@ -45,8 +45,8 @@ namespace WPFUserInterface
 
             Subject subject = new Subject()
             {
-                Nickname = textBoxSubjectName.Text,
-                Age = Convert.ToInt32(textBoxAge.Text),
+                Nickname = textBoxSubjectName.Text.Trim(),
+                Age = Convert.ToInt32(textBoxAge.Text.Trim()),
                 Gender = radioButtonMale.IsChecked == true ? Gender.Male : Gender.Female,
                 SessionStartDate = DateTime.Now,
                 QuestionAnswers = new List<QuestionAnswer>()

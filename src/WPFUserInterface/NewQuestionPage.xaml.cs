@@ -32,12 +32,10 @@ namespace WPFUserInterface
             if (!validator.Validate(textBoxQuestion.Text))
             {
                 MessageBox.Show("A kérdés szövege nem lehet üres, és nem tartalmazhat speciális karaktert!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                textBoxQuestion.Clear();
                 return;
             }
 
-            string questionText = textBoxQuestion.Text;
+            string questionText = textBoxQuestion.Text.Trim();
             Hemisphere hemisphere = radioLeft.IsChecked.Value ? Hemisphere.Left : Hemisphere.Right;
             bool isAdult = radioAdult.IsChecked.Value;
 
@@ -54,6 +52,11 @@ namespace WPFUserInterface
             }
 
             MessageBox.Show("Sikeres mentés!", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxQuestion.Clear();
         }
     }
 }
