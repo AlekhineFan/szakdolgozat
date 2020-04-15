@@ -27,12 +27,12 @@ namespace WPFUserInterface
             NextQuestion();
         }
 
-        private void buttonYes_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonYes_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             AnswerChosen(true);
         }
 
-        private void buttonNo_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonNo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             AnswerChosen(false);
         }

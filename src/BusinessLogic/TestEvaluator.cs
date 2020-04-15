@@ -11,11 +11,13 @@ namespace BusinessLogic
             HemispherePercentage percentage = new HemispherePercentage();
 
             int numberOfQuestions = subject.QuestionAnswers.Count();
-            int answersForRight = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Right && qa.Answer == true).Count();
-            int answersForLeft = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Left && qa.Answer == true).Count();
 
-            double rightPerc = Math.Round(answersForRight / ((answersForRight + answersForLeft) * 0.01), 2);
-            double leftPerc = Math.Round(answersForLeft / ((answersForRight + answersForLeft) * 0.01), 2);
+            int answersForRight = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Right && qa.Answer == true).Count() + subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Left && qa.Answer == false).Count();
+
+            int answersForLeft = subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Left && qa.Answer == true).Count() + subject.QuestionAnswers.Where(qa => qa.Question.Hemisphere == Hemisphere.Right && qa.Answer == false).Count();
+
+            double rightPerc = Math.Round(answersForRight / ((numberOfQuestions) * 0.01), 2);
+            double leftPerc = 100 - rightPerc;
 
             if (Double.IsNaN(rightPerc))
             {
