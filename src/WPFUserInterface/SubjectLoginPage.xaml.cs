@@ -73,5 +73,11 @@ namespace WPFUserInterface
             subjectRepository?.Dispose();
         }
 
+        private void CancelTest_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxAge.Clear();
+            textBoxSubjectName.Clear();
+            NavigationService.GoBack();
+        }
     }
 }
