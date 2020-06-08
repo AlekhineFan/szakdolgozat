@@ -10,7 +10,7 @@ namespace BusinessLogic
         public double LeftPercentage { get; set; }
         public override string ToString()
         {
-            return $"jobb agyfélteke: {RightPercentage}%, bal agyfélteke: {LeftPercentage}%";
+            return $"jobb agyfélteke: {RightPercentage.ToString("0.00")}%, bal agyfélteke: {LeftPercentage.ToString("0.00")}%";
         }
     }
 }

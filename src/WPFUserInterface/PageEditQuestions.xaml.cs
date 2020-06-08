@@ -99,6 +99,8 @@ namespace WPFUserInterface
             questionManager.SaveChanges();
 
             MessageBox.Show("Sikeres mentés!", "Mentés", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            PopulateListBoxQuestion();
         }
         private void DeleteProcedure()
         {
